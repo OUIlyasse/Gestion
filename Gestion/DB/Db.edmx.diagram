@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5e1872c98dec41e1a6dd08ff8931ee20" Name="Diagram1" DisplayType="false">
+        <EntityTypeShape EntityType="GestionModel.Pneu" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionModel.Bon_Entree" Width="1.5" PointX="5.25" PointY="8.875" />
+        <EntityTypeShape EntityType="GestionModel.Fournisseur" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GestionModel.Representant" Width="1.5" PointX="3" PointY="11.25" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Entree_Fournisseur" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Entree_Representant" />
+        <AssociationConnector Association="GestionModel.FK_Representant_Fournisseur" />
+        <EntityTypeShape EntityType="GestionModel.Bon_Entree_Article" Width="1.5" PointX="7.5" PointY="5.5" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Entree_Article_Bon_Entree" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Entree_Article_Pneu" />
+        <EntityTypeShape EntityType="GestionModel.Operation" Width="1.5" PointX="4.375" PointY="0.875" />
+        <AssociationConnector Association="GestionModel.FK_Operation_Operation" />
+        <EntityTypeShape EntityType="GestionModel.Bon_Sortie" Width="1.5" PointX="5.25" PointY="15.25" />
+        <EntityTypeShape EntityType="GestionModel.Bon_Sortie_Article" Width="1.5" PointX="7.5" PointY="1.125" />
+        <EntityTypeShape EntityType="GestionModel.Unite_Soutien" Width="1.5" PointX="5.25" PointY="19.625" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Sortie_Article_Bon_Sortie" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Sortie_Unite_Soutien" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Sortie_Article_Pneu" />
+        <EntityTypeShape EntityType="GestionModel.Bon_Retour" Width="1.5" PointX="7.25" PointY="17.375" />
+        <EntityTypeShape EntityType="GestionModel.Bon_Retour_Article" Width="1.5" PointX="9.5" PointY="3" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Retour_Article_Bon_Retour" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Retour_Unite_Soutien" />
+        <AssociationConnector Association="GestionModel.FK_Bon_Retour_Article_Pneu" />
+        <EntityTypeShape EntityType="GestionModel.Ville" Width="1.5" PointX="3.375" PointY="4.75" />
+        <AssociationConnector Association="GestionModel.FK_Unite_Soutien_Ville" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

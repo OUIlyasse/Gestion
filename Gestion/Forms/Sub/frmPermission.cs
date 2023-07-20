@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Gestion
+namespace Gestion.Forms.Sub
 {
-    public partial class Form1 : Form
+    public partial class frmPermission : Form
     {
-        public Form1()
+        public frmPermission()
         {
             InitializeComponent();
         }

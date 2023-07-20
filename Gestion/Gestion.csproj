@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +48,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="iTools">
+      <HintPath>..\..\..\Git_22\iTools\iTools\bin\Debug\iTools.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +73,428 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="DB\Bon_Entree.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Bon_Entree_Article.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Bon_Retour.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Bon_Retour_Article.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Bon_Sortie.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Bon_Sortie_Article.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Db.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Db.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Db.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Fournisseur.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\frmBRDB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="DB\frmBRDB.Designer.cs">
+      <DependentUpon>frmBRDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Historique_Bon_Entree_Article_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Historique_Bon_Entree_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Historique_Bon_Retour_Article_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Historique_Bon_Retour_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Historique_Bon_Sortie_Article_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Historique_Bon_Sortie_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Operation.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Pneu.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Representant.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Entree_Article_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Entree_Article_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Entree_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Entree_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Retour_Article_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Retour_Article_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Retour_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Retour_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Sortie_Article_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Sortie_Article_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Sortie_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Bon_Sortie_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Representant_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Unite_Soutien_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Search_Ville_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Bon_Entree_Article_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Bon_Entree_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Bon_Retour_Article_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Bon_Retour_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Bon_Sortie_Article_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Bon_Sortie_H_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Bon_Sortie_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Fournisseur_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Operation_By_ID_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Operation_By_Operation_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Operation_By_Type_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Pneu_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Representant_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Unite_Soutien_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Select_Ville_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Show_Ville_By_ID_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\SommeQte_Result.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Unite_Soutien.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Ville.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\iForms\frmCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\iForms\frmCRUD.Designer.cs">
+      <DependentUpon>frmCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\iForms\frmLCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\iForms\frmLCRUD.Designer.cs">
+      <DependentUpon>frmLCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\iForms\frmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\iForms\frmList.Designer.cs">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmBRData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmBRData.Designer.cs">
+      <DependentUpon>frmBRData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmEBon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmEBon.Designer.cs">
+      <DependentUpon>frmEBon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmEBonAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmEBonAdd.Designer.cs">
+      <DependentUpon>frmEBonAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmEBonAddArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmEBonAddArticle.Designer.cs">
+      <DependentUpon>frmEBonAddArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmFournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmFournisseur.Designer.cs">
+      <DependentUpon>frmFournisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmHistoriqueRBon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmHistoriqueRBon.Designer.cs">
+      <DependentUpon>frmHistoriqueRBon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmHistoriqueSBon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmHistoriqueSBon.Designer.cs">
+      <DependentUpon>frmHistoriqueSBon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmHistoriqueEBon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmHistoriqueEBon.Designer.cs">
+      <DependentUpon>frmHistoriqueEBon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmLFournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmLFournisseur.Designer.cs">
+      <DependentUpon>frmLFournisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmLRepresentant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmLRepresentant.Designer.cs">
+      <DependentUpon>frmLRepresentant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmOperation.Designer.cs">
+      <DependentUpon>frmOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmPermission.Designer.cs">
+      <DependentUpon>frmPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmRBon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmRBon.Designer.cs">
+      <DependentUpon>frmRBon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmRepresentant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmRepresentant.Designer.cs">
+      <DependentUpon>frmRepresentant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmSBon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmSBon.Designer.cs">
+      <DependentUpon>frmSBon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmRBonAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmRBonAdd.Designer.cs">
+      <DependentUpon>frmRBonAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmSBonAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmSBonAdd.Designer.cs">
+      <DependentUpon>frmSBonAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmRBonAddArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmRBonAddArticle.Designer.cs">
+      <DependentUpon>frmRBonAddArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmSBonAddArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmSBonAddArticle.Designer.cs">
+      <DependentUpon>frmSBonAddArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmStock.Designer.cs">
+      <DependentUpon>frmStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmUSoutien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmUSoutien.Designer.cs">
+      <DependentUpon>frmUSoutien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmPneu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmPneu.Designer.cs">
+      <DependentUpon>frmPneu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sub\frmVille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sub\frmVille.Designer.cs">
+      <DependentUpon>frmVille.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\iForms\frmCRUD.resx">
+      <DependentUpon>frmCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\iForms\frmLCRUD.resx">
+      <DependentUpon>frmLCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\iForms\frmList.resx">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmBRData.resx">
+      <DependentUpon>frmBRData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmEBon.resx">
+      <DependentUpon>frmEBon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmEBonAdd.resx">
+      <DependentUpon>frmEBonAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmEBonAddArticle.resx">
+      <DependentUpon>frmEBonAddArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmFournisseur.resx">
+      <DependentUpon>frmFournisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmHistoriqueRBon.resx">
+      <DependentUpon>frmHistoriqueRBon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmHistoriqueSBon.resx">
+      <DependentUpon>frmHistoriqueSBon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmHistoriqueEBon.resx">
+      <DependentUpon>frmHistoriqueEBon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmLFournisseur.resx">
+      <DependentUpon>frmLFournisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmLRepresentant.resx">
+      <DependentUpon>frmLRepresentant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmOperation.resx">
+      <DependentUpon>frmOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmPermission.resx">
+      <DependentUpon>frmPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmRBon.resx">
+      <DependentUpon>frmRBon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmRepresentant.resx">
+      <DependentUpon>frmRepresentant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmSBon.resx">
+      <DependentUpon>frmSBon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmRBonAdd.resx">
+      <DependentUpon>frmRBonAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmSBonAdd.resx">
+      <DependentUpon>frmSBonAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmRBonAddArticle.resx">
+      <DependentUpon>frmRBonAddArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmSBonAddArticle.resx">
+      <DependentUpon>frmSBonAddArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmStock.resx">
+      <DependentUpon>frmStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmUSoutien.resx">
+      <DependentUpon>frmUSoutien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmPneu.resx">
+      <DependentUpon>frmPneu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sub\frmVille.resx">
+      <DependentUpon>frmVille.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,7 +503,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EntityDeploy Include="DB\Db.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Db.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DB\Db.edmx.diagram">
+      <DependentUpon>Db.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +525,40 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB\Db.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Db.Context.cs</LastGenOutput>
+      <DependentUpon>Db.edmx</DependentUpon>
+    </Content>
+    <Content Include="DB\Db.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Db.edmx</DependentUpon>
+      <LastGenOutput>Db.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\Folder_36px.png" />
+    <None Include="Resources\New_file_28px.png" />
+    <None Include="Resources\Plus_32px.png" />
+    <None Include="Resources\Supprimer_48.png" />
+    <None Include="Resources\Modifier_48.png" />
+    <None Include="Resources\Ajouter_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

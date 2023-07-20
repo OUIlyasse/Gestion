@@ -1,0 +1,2686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GestionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bon_Entree">
+          <Key>
+            <PropertyRef Name="be_ID" />
+          </Key>
+          <Property Name="be_ID" Type="int" Nullable="false" />
+          <Property Name="be_Date" Type="date" />
+          <Property Name="be_Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="be_Reference" Type="nvarchar(max)" />
+          <Property Name="be_PV" Type="nvarchar(max)" />
+          <Property Name="frns_ID" Type="int" />
+          <Property Name="rep_ID" Type="int" />
+          <Property Name="be_Description" Type="nvarchar(max)" />
+          <Property Name="be_Historique" Type="bit" />
+        </EntityType>
+        <EntityType Name="Bon_Entree_Article">
+          <Key>
+            <PropertyRef Name="be_A_ID" />
+          </Key>
+          <Property Name="be_A_ID" Type="int" Nullable="false" />
+          <Property Name="be_A_Date" Type="date" />
+          <Property Name="be_Qte_Livree" Type="int" />
+          <Property Name="be_ID" Type="int" />
+          <Property Name="pne_ID" Type="int" />
+          <Property Name="be_A_Description" Type="nvarchar(max)" />
+          <Property Name="be_A_Historique" Type="bit" />
+        </EntityType>
+        <EntityType Name="Bon_Retour">
+          <Key>
+            <PropertyRef Name="br_ID" />
+          </Key>
+          <Property Name="br_ID" Type="int" Nullable="false" />
+          <Property Name="br_Date" Type="date" />
+          <Property Name="br_Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="br_Reference" Type="nvarchar(max)" />
+          <Property Name="br_PV" Type="nvarchar(max)" />
+          <Property Name="unt_ID" Type="int" />
+          <Property Name="br_Description" Type="nvarchar(max)" />
+          <Property Name="br_Historique" Type="bit" />
+        </EntityType>
+        <EntityType Name="Bon_Retour_Article">
+          <Key>
+            <PropertyRef Name="br_A_ID" />
+          </Key>
+          <Property Name="br_A_ID" Type="int" Nullable="false" />
+          <Property Name="br_A_Date" Type="date" />
+          <Property Name="br_Qte_Livree" Type="int" />
+          <Property Name="br_ID" Type="int" />
+          <Property Name="pne_ID" Type="int" />
+          <Property Name="br_A_Description" Type="nvarchar(max)" />
+          <Property Name="br_A_Historique" Type="bit" />
+        </EntityType>
+        <EntityType Name="Bon_Sortie">
+          <Key>
+            <PropertyRef Name="bs_ID" />
+          </Key>
+          <Property Name="bs_ID" Type="int" Nullable="false" />
+          <Property Name="bs_Date" Type="date" />
+          <Property Name="bs_Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="bs_Reference" Type="nvarchar(max)" />
+          <Property Name="unt_ID" Type="int" />
+          <Property Name="bs_Description" Type="nvarchar(max)" />
+          <Property Name="bs_Historique" Type="bit" />
+        </EntityType>
+        <EntityType Name="Bon_Sortie_Article">
+          <Key>
+            <PropertyRef Name="bs_A_ID" />
+          </Key>
+          <Property Name="bs_A_ID" Type="int" Nullable="false" />
+          <Property Name="bs_A_Date" Type="date" />
+          <Property Name="bs_Qte_Livree" Type="int" />
+          <Property Name="bs_ID" Type="int" />
+          <Property Name="pne_ID" Type="int" />
+          <Property Name="bs_A_Description" Type="nvarchar(max)" />
+          <Property Name="bs_A_Historique" Type="bit" />
+        </EntityType>
+        <EntityType Name="Fournisseur">
+          <Key>
+            <PropertyRef Name="frns_ID" />
+          </Key>
+          <Property Name="frns_ID" Type="int" Nullable="false" />
+          <Property Name="frns_Nom" Type="nvarchar(max)" />
+          <Property Name="frns_Adresse" Type="nvarchar(max)" />
+          <Property Name="frns_Adresse2" Type="nvarchar(max)" />
+          <Property Name="frns_Code_Postal" Type="nvarchar(max)" />
+          <Property Name="vil_ID" Type="int" />
+          <Property Name="frns_Email" Type="nvarchar(max)" />
+          <Property Name="frns_GSM" Type="nvarchar(max)" />
+          <Property Name="frns_GSM2" Type="nvarchar(max)" />
+          <Property Name="frns_Fixe1" Type="nvarchar(max)" />
+          <Property Name="frns_Fixe2" Type="nvarchar(max)" />
+          <Property Name="frns_Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Operation">
+          <Key>
+            <PropertyRef Name="opera_ID" />
+          </Key>
+          <Property Name="opera_ID" Type="int" Nullable="false" />
+          <Property Name="opera_Date" Type="date" />
+          <Property Name="pne_ID" Type="int" />
+          <Property Name="opera_Type" Type="nchar" MaxLength="10" />
+          <Property Name="opera_Qte" Type="int" />
+          <Property Name="bon_ID" Type="int" />
+          <Property Name="bs_A_ID" Type="int" />
+          <Property Name="be_A_ID" Type="int" />
+          <Property Name="br_A_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Pneu">
+          <Key>
+            <PropertyRef Name="pne_ID" />
+          </Key>
+          <Property Name="pne_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pne_Designation" Type="nvarchar(max)" />
+          <Property Name="pne_Marque" Type="nvarchar(max)" />
+          <Property Name="pne_Date_Production" Type="date" />
+          <Property Name="pne_Observation" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Representant">
+          <Key>
+            <PropertyRef Name="rep_ID" />
+          </Key>
+          <Property Name="rep_ID" Type="int" Nullable="false" />
+          <Property Name="frns_ID" Type="int" />
+          <Property Name="rep_Nom" Type="nvarchar(max)" />
+          <Property Name="rep_Prenom" Type="nvarchar(max)" />
+          <Property Name="rep_Cin" Type="nchar" MaxLength="10" />
+          <Property Name="rep_Tele" Type="nvarchar(max)" />
+          <Property Name="rep_Observation" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Unite_Soutien">
+          <Key>
+            <PropertyRef Name="unt_ID" />
+          </Key>
+          <Property Name="unt_ID" Type="int" Nullable="false" />
+          <Property Name="unt_Unite" Type="nvarchar(max)" />
+          <Property Name="vil_ID" Type="int" />
+          <Property Name="unt_Description" Type="nvarchar(max)" />
+          <Property Name="unt_status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="vil_ID" />
+          </Key>
+          <Property Name="vil_ID" Type="int" Nullable="false" />
+          <Property Name="vil_Nom" Type="nvarchar" MaxLength="500" />
+          <Property Name="vil_Description" Type="nvarchar(max)" />
+          <Property Name="vil_Status" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Bon_Entree_Article_Bon_Entree">
+          <End Role="Bon_Entree" Type="Self.Bon_Entree" Multiplicity="0..1" />
+          <End Role="Bon_Entree_Article" Type="Self.Bon_Entree_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bon_Entree">
+              <PropertyRef Name="be_ID" />
+            </Principal>
+            <Dependent Role="Bon_Entree_Article">
+              <PropertyRef Name="be_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Entree_Article_Pneu">
+          <End Role="Pneu" Type="Self.Pneu" Multiplicity="0..1" />
+          <End Role="Bon_Entree_Article" Type="Self.Bon_Entree_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pneu">
+              <PropertyRef Name="pne_ID" />
+            </Principal>
+            <Dependent Role="Bon_Entree_Article">
+              <PropertyRef Name="pne_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Entree_Fournisseur">
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+          <End Role="Bon_Entree" Type="Self.Bon_Entree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="frns_ID" />
+            </Principal>
+            <Dependent Role="Bon_Entree">
+              <PropertyRef Name="frns_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Entree_Representant">
+          <End Role="Representant" Type="Self.Representant" Multiplicity="0..1" />
+          <End Role="Bon_Entree" Type="Self.Bon_Entree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Representant">
+              <PropertyRef Name="rep_ID" />
+            </Principal>
+            <Dependent Role="Bon_Entree">
+              <PropertyRef Name="rep_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Retour_Article_Bon_Retour">
+          <End Role="Bon_Retour" Type="Self.Bon_Retour" Multiplicity="0..1" />
+          <End Role="Bon_Retour_Article" Type="Self.Bon_Retour_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bon_Retour">
+              <PropertyRef Name="br_ID" />
+            </Principal>
+            <Dependent Role="Bon_Retour_Article">
+              <PropertyRef Name="br_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Retour_Article_Pneu">
+          <End Role="Pneu" Type="Self.Pneu" Multiplicity="0..1" />
+          <End Role="Bon_Retour_Article" Type="Self.Bon_Retour_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pneu">
+              <PropertyRef Name="pne_ID" />
+            </Principal>
+            <Dependent Role="Bon_Retour_Article">
+              <PropertyRef Name="pne_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Retour_Unite_Soutien">
+          <End Role="Unite_Soutien" Type="Self.Unite_Soutien" Multiplicity="0..1" />
+          <End Role="Bon_Retour" Type="Self.Bon_Retour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unite_Soutien">
+              <PropertyRef Name="unt_ID" />
+            </Principal>
+            <Dependent Role="Bon_Retour">
+              <PropertyRef Name="unt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Sortie_Article_Bon_Sortie">
+          <End Role="Bon_Sortie" Type="Self.Bon_Sortie" Multiplicity="0..1" />
+          <End Role="Bon_Sortie_Article" Type="Self.Bon_Sortie_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bon_Sortie">
+              <PropertyRef Name="bs_ID" />
+            </Principal>
+            <Dependent Role="Bon_Sortie_Article">
+              <PropertyRef Name="bs_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Sortie_Article_Pneu">
+          <End Role="Pneu" Type="Self.Pneu" Multiplicity="0..1" />
+          <End Role="Bon_Sortie_Article" Type="Self.Bon_Sortie_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pneu">
+              <PropertyRef Name="pne_ID" />
+            </Principal>
+            <Dependent Role="Bon_Sortie_Article">
+              <PropertyRef Name="pne_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Sortie_Unite_Soutien">
+          <End Role="Unite_Soutien" Type="Self.Unite_Soutien" Multiplicity="0..1" />
+          <End Role="Bon_Sortie" Type="Self.Bon_Sortie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unite_Soutien">
+              <PropertyRef Name="unt_ID" />
+            </Principal>
+            <Dependent Role="Bon_Sortie">
+              <PropertyRef Name="unt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operation_Operation">
+          <End Role="Pneu" Type="Self.Pneu" Multiplicity="0..1" />
+          <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pneu">
+              <PropertyRef Name="pne_ID" />
+            </Principal>
+            <Dependent Role="Operation">
+              <PropertyRef Name="pne_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Representant_Fournisseur">
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+          <End Role="Representant" Type="Self.Representant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="frns_ID" />
+            </Principal>
+            <Dependent Role="Representant">
+              <PropertyRef Name="frns_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Unite_Soutien_Ville">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
+          <End Role="Unite_Soutien" Type="Self.Unite_Soutien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="vil_ID" />
+            </Principal>
+            <Dependent Role="Unite_Soutien">
+              <PropertyRef Name="vil_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Count_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_Historique" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Count_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_A_Historique" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Count_Fournisseur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Count_Pneu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Count_Unite_Soutien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Count_Ville" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Delete_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Bon_Retour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Bon_Retour_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Bon_Sortie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Bon_Sortie_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Fournisseur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Operation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="opera_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Pneu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rep_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Representant_All" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Unite_Soutien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="unt_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Ville" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vil_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="Historique_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Historique_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Historique_Bon_Entree_Article_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Historique_Bon_Entree_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Historique_Bon_Retour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Historique_Bon_Retour_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Historique_Bon_Retour_Article_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Historique_Bon_Retour_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Historique_Bon_Sortie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Historique_Bon_Sortie_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Historique_Bon_Sortie_Article_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Historique_Bon_Sortie_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Insert_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+          <Parameter Name="be_Date" Type="date" Mode="In" />
+          <Parameter Name="be_Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="be_Reference" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="be_PV" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+          <Parameter Name="rep_ID" Type="int" Mode="In" />
+          <Parameter Name="be_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_A_ID" Type="int" Mode="In" />
+          <Parameter Name="be_A_Date" Type="date" Mode="In" />
+          <Parameter Name="be_Qte_Livree" Type="int" Mode="In" />
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="be_A_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Bon_Retour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+          <Parameter Name="br_Date" Type="date" Mode="In" />
+          <Parameter Name="br_Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="br_Reference" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="br_PV" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="unt_ID" Type="int" Mode="In" />
+          <Parameter Name="br_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Bon_Retour_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_A_ID" Type="int" Mode="In" />
+          <Parameter Name="br_A_Date" Type="date" Mode="In" />
+          <Parameter Name="br_Qte_Livree" Type="int" Mode="In" />
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="br_A_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Bon_Sortie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_Date" Type="date" Mode="In" />
+          <Parameter Name="bs_Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="bs_Reference" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="unt_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Bon_Sortie_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_A_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_A_Date" Type="date" Mode="In" />
+          <Parameter Name="bs_Qte_Livree" Type="int" Mode="In" />
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_A_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Fournisseur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+          <Parameter Name="frns_Nom" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Adresse" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Adresse2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Code_Postal" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="vil_ID" Type="int" Mode="In" />
+          <Parameter Name="frns_Email" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_GSM" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_GSM2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Fixe1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Fixe2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Operation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="opera_ID" Type="int" Mode="In" />
+          <Parameter Name="opera_Date" Type="date" Mode="In" />
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="opera_Type" Type="nchar" Mode="In" />
+          <Parameter Name="opera_Qte" Type="int" Mode="In" />
+          <Parameter Name="bon_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_A_ID" Type="int" Mode="In" />
+          <Parameter Name="be_A_ID" Type="int" Mode="In" />
+          <Parameter Name="br_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Insert_Pneu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="pne_Designation" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="pne_Marque" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="pne_Date_Production" Type="date" Mode="In" />
+          <Parameter Name="pne_Observation" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rep_ID" Type="int" Mode="In" />
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+          <Parameter Name="rep_Nom" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="rep_Prenom" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="rep_Cin" Type="nchar" Mode="In" />
+          <Parameter Name="rep_Tele" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="rep_Observation" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Unite_Soutien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="unt_ID" Type="int" Mode="In" />
+          <Parameter Name="unt_Unite" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="vil_ID" Type="int" Mode="In" />
+          <Parameter Name="unt_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Insert_Ville" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vil_ID" Type="int" Mode="In" />
+          <Parameter Name="vil_Nom" Type="nvarchar" Mode="In" />
+          <Parameter Name="vil_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="MaxID_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Bon_Retour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Bon_Retour_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Bon_Sortie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Bon_Sortie_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Fournisseur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Operation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Pneu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Unite_Soutien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaxID_Ville" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ResteQteArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Entree_Article_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Entree_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Retour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Retour_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Retour_Article_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Retour_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Sortie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Sortie_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Sortie_Article_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Bon_Sortie_H" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Fournisseur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Search_Unite_Soutien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Search_Ville" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Search" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Select_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Bon_Retour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_Bon_Retour_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Bon_Sortie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_Bon_Sortie_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Fournisseur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_Operation_By_Operation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TypeBon" Type="nchar" Mode="In" />
+          <Parameter Name="pne_Designation" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Select_Pneu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Unite_Soutien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_Ville" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Show_Bon_Entree_Article_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Bon_Entree_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Bon_Retour_Article_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Bon_Retour_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Bon_Sortie_Article_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Bon_Sortie_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Fournisseur_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Pneu_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Representant_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rep_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Unite_Soutien_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="unt_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Show_Ville_By_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vil_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SommeQte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Update_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+          <Parameter Name="be_Date" Type="date" Mode="In" />
+          <Parameter Name="be_Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="be_Reference" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="be_PV" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+          <Parameter Name="rep_ID" Type="int" Mode="In" />
+          <Parameter Name="be_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="be_A_ID" Type="int" Mode="In" />
+          <Parameter Name="be_A_Date" Type="date" Mode="In" />
+          <Parameter Name="be_Qte_Livree" Type="int" Mode="In" />
+          <Parameter Name="be_ID" Type="int" Mode="In" />
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="be_A_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Bon_Retour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+          <Parameter Name="br_Date" Type="date" Mode="In" />
+          <Parameter Name="br_Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="br_Reference" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="br_PV" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="unt_ID" Type="int" Mode="In" />
+          <Parameter Name="br_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Bon_Retour_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="br_A_ID" Type="int" Mode="In" />
+          <Parameter Name="br_A_Date" Type="date" Mode="In" />
+          <Parameter Name="br_Qte_Livree" Type="int" Mode="In" />
+          <Parameter Name="br_ID" Type="int" Mode="In" />
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="br_A_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Bon_Sortie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_Date" Type="date" Mode="In" />
+          <Parameter Name="bs_Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="bs_Reference" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="unt_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Bon_Sortie_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bs_A_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_A_Date" Type="date" Mode="In" />
+          <Parameter Name="bs_Qte_Livree" Type="int" Mode="In" />
+          <Parameter Name="bs_ID" Type="int" Mode="In" />
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_A_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Fournisseur" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+          <Parameter Name="frns_Nom" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Adresse" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Adresse2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Code_Postal" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="vil_ID" Type="int" Mode="In" />
+          <Parameter Name="frns_Email" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_GSM" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_GSM2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Fixe1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Fixe2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="frns_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Operation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="opera_ID" Type="int" Mode="In" />
+          <Parameter Name="opera_Date" Type="date" Mode="In" />
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="opera_Type" Type="nchar" Mode="In" />
+          <Parameter Name="opera_Qte" Type="int" Mode="In" />
+          <Parameter Name="bon_ID" Type="int" Mode="In" />
+          <Parameter Name="bs_A_ID" Type="int" Mode="In" />
+          <Parameter Name="be_A_ID" Type="int" Mode="In" />
+          <Parameter Name="br_A_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Update_Pneu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pne_ID" Type="int" Mode="In" />
+          <Parameter Name="pne_Designation" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="pne_Marque" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="pne_Date_Production" Type="date" Mode="In" />
+          <Parameter Name="pne_Observation" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rep_ID" Type="int" Mode="In" />
+          <Parameter Name="frns_ID" Type="int" Mode="In" />
+          <Parameter Name="rep_Nom" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="rep_Prenom" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="rep_Cin" Type="nchar" Mode="In" />
+          <Parameter Name="rep_Tele" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="rep_Observation" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Unite_Soutien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="unt_ID" Type="int" Mode="In" />
+          <Parameter Name="unt_Unite" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="vil_ID" Type="int" Mode="In" />
+          <Parameter Name="unt_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Update_Ville" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vil_ID" Type="int" Mode="In" />
+          <Parameter Name="vil_Nom" Type="nvarchar" Mode="In" />
+          <Parameter Name="vil_Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="GestionModelStoreContainer">
+          <EntitySet Name="Bon_Entree" EntityType="Self.Bon_Entree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bon_Entree_Article" EntityType="Self.Bon_Entree_Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bon_Retour" EntityType="Self.Bon_Retour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bon_Retour_Article" EntityType="Self.Bon_Retour_Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bon_Sortie" EntityType="Self.Bon_Sortie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bon_Sortie_Article" EntityType="Self.Bon_Sortie_Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operation" EntityType="Self.Operation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pneu" EntityType="Self.Pneu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Representant" EntityType="Self.Representant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unite_Soutien" EntityType="Self.Unite_Soutien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ville" EntityType="Self.Ville" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bon_Entree_Article_Bon_Entree" Association="Self.FK_Bon_Entree_Article_Bon_Entree">
+            <End Role="Bon_Entree" EntitySet="Bon_Entree" />
+            <End Role="Bon_Entree_Article" EntitySet="Bon_Entree_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Entree_Article_Pneu" Association="Self.FK_Bon_Entree_Article_Pneu">
+            <End Role="Pneu" EntitySet="Pneu" />
+            <End Role="Bon_Entree_Article" EntitySet="Bon_Entree_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Entree_Fournisseur" Association="Self.FK_Bon_Entree_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Bon_Entree" EntitySet="Bon_Entree" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Entree_Representant" Association="Self.FK_Bon_Entree_Representant">
+            <End Role="Representant" EntitySet="Representant" />
+            <End Role="Bon_Entree" EntitySet="Bon_Entree" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Retour_Article_Bon_Retour" Association="Self.FK_Bon_Retour_Article_Bon_Retour">
+            <End Role="Bon_Retour" EntitySet="Bon_Retour" />
+            <End Role="Bon_Retour_Article" EntitySet="Bon_Retour_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Retour_Article_Pneu" Association="Self.FK_Bon_Retour_Article_Pneu">
+            <End Role="Pneu" EntitySet="Pneu" />
+            <End Role="Bon_Retour_Article" EntitySet="Bon_Retour_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Retour_Unite_Soutien" Association="Self.FK_Bon_Retour_Unite_Soutien">
+            <End Role="Unite_Soutien" EntitySet="Unite_Soutien" />
+            <End Role="Bon_Retour" EntitySet="Bon_Retour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Sortie_Article_Bon_Sortie" Association="Self.FK_Bon_Sortie_Article_Bon_Sortie">
+            <End Role="Bon_Sortie" EntitySet="Bon_Sortie" />
+            <End Role="Bon_Sortie_Article" EntitySet="Bon_Sortie_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Sortie_Article_Pneu" Association="Self.FK_Bon_Sortie_Article_Pneu">
+            <End Role="Pneu" EntitySet="Pneu" />
+            <End Role="Bon_Sortie_Article" EntitySet="Bon_Sortie_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Sortie_Unite_Soutien" Association="Self.FK_Bon_Sortie_Unite_Soutien">
+            <End Role="Unite_Soutien" EntitySet="Unite_Soutien" />
+            <End Role="Bon_Sortie" EntitySet="Bon_Sortie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operation_Operation" Association="Self.FK_Operation_Operation">
+            <End Role="Pneu" EntitySet="Pneu" />
+            <End Role="Operation" EntitySet="Operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representant_Fournisseur" Association="Self.FK_Representant_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Representant" EntitySet="Representant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Unite_Soutien_Ville" Association="Self.FK_Unite_Soutien_Ville">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Unite_Soutien" EntitySet="Unite_Soutien" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GestionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Pneu">
+          <Key>
+            <PropertyRef Name="pne_ID" />
+          </Key>
+          <Property Name="pne_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pne_Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pne_Marque" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pne_Date_Production" Type="DateTime" Precision="0" />
+          <Property Name="pne_Observation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bon_Entree_Article" Relationship="GestionModel.FK_Bon_Entree_Article_Pneu" FromRole="Pneu" ToRole="Bon_Entree_Article" />
+          <NavigationProperty Name="Operation" Relationship="GestionModel.FK_Operation_Operation" FromRole="Pneu" ToRole="Operation" />
+          <NavigationProperty Name="Bon_Sortie_Article" Relationship="GestionModel.FK_Bon_Sortie_Article_Pneu" FromRole="Pneu" ToRole="Bon_Sortie_Article" />
+          <NavigationProperty Name="Bon_Retour_Article" Relationship="GestionModel.FK_Bon_Retour_Article_Pneu" FromRole="Pneu" ToRole="Bon_Retour_Article" />
+        </EntityType>
+        <EntityContainer Name="GestionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pneu" EntityType="Self.Pneu" />
+          <FunctionImport Name="Delete_Operation">
+          <Parameter Name="opera_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Pneu">
+          <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Pneu" ReturnType="Collection(Int32)">
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pne_Designation" Mode="In" Type="String" />
+            <Parameter Name="pne_Marque" Mode="In" Type="String" />
+            <Parameter Name="pne_Date_Production" Mode="In" Type="DateTime" />
+            <Parameter Name="pne_Observation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MaxID_Operation" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="MaxID_Pneu" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Select_Operation_By_Type" ReturnType="Collection(GestionModel.Select_Operation_By_Type_Result)">
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="opera_Type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Pneu" ReturnType="Collection(GestionModel.Select_Pneu_Result)" />
+          <FunctionImport Name="SommeQte" ReturnType="Collection(GestionModel.SommeQte_Result)" />
+          <FunctionImport Name="Update_Pneu" ReturnType="Collection(Int32)">
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pne_Designation" Mode="In" Type="String" />
+            <Parameter Name="pne_Marque" Mode="In" Type="String" />
+            <Parameter Name="pne_Date_Production" Mode="In" Type="DateTime" />
+            <Parameter Name="pne_Observation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Operation_By_ID">
+          <Parameter Name="opera_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Show_Pneu_By_ID" EntitySet="Pneu" ReturnType="Collection(GestionModel.Pneu)">
+          <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Bon_Entree" EntityType="GestionModel.Bon_Entree" />
+          <EntitySet Name="Fournisseur" EntityType="GestionModel.Fournisseur" />
+          <EntitySet Name="Representant" EntityType="GestionModel.Representant" />
+          <AssociationSet Name="FK_Bon_Entree_Fournisseur" Association="GestionModel.FK_Bon_Entree_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Bon_Entree" EntitySet="Bon_Entree" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Entree_Representant" Association="GestionModel.FK_Bon_Entree_Representant">
+            <End Role="Representant" EntitySet="Representant" />
+            <End Role="Bon_Entree" EntitySet="Bon_Entree" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representant_Fournisseur" Association="GestionModel.FK_Representant_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="Representant" EntitySet="Representant" />
+          </AssociationSet>
+          <FunctionImport Name="Delete_Bon_Entree">
+          <Parameter Name="be_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Fournisseur">
+          <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Representant">
+          <Parameter Name="rep_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Representant_All">
+          <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Bon_Entree" ReturnType="Collection(Int32)">
+            <Parameter Name="be_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="be_Designation" Mode="In" Type="String" />
+            <Parameter Name="be_Reference" Mode="In" Type="String" />
+            <Parameter Name="be_PV" Mode="In" Type="String" />
+            <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+            <Parameter Name="rep_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Fournisseur" ReturnType="Collection(Int32)">
+            <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+            <Parameter Name="frns_Nom" Mode="In" Type="String" />
+            <Parameter Name="frns_Adresse" Mode="In" Type="String" />
+            <Parameter Name="frns_Adresse2" Mode="In" Type="String" />
+            <Parameter Name="frns_Code_Postal" Mode="In" Type="String" />
+            <Parameter Name="vil_ID" Mode="In" Type="Int32" />
+            <Parameter Name="frns_Email" Mode="In" Type="String" />
+            <Parameter Name="frns_GSM" Mode="In" Type="String" />
+            <Parameter Name="frns_GSM2" Mode="In" Type="String" />
+            <Parameter Name="frns_Fixe1" Mode="In" Type="String" />
+            <Parameter Name="frns_Fixe2" Mode="In" Type="String" />
+            <Parameter Name="frns_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Representant" ReturnType="Collection(Int32)">
+            <Parameter Name="rep_ID" Mode="In" Type="Int32" />
+            <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+            <Parameter Name="rep_Nom" Mode="In" Type="String" />
+            <Parameter Name="rep_Prenom" Mode="In" Type="String" />
+            <Parameter Name="rep_Cin" Mode="In" Type="String" />
+            <Parameter Name="rep_Tele" Mode="In" Type="String" />
+            <Parameter Name="rep_Observation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MaxID_Bon_Entree" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="MaxID_Fournisseur" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="MaxID_Representant" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Select_Bon_Entree" ReturnType="Collection(GestionModel.Select_Bon_Entree_Result)" />
+          <FunctionImport Name="Select_Bon_Entree_Article" ReturnType="Collection(GestionModel.Select_Bon_Entree_Article_Result)">
+          <Parameter Name="be_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Fournisseur" ReturnType="Collection(GestionModel.Select_Fournisseur_Result)" />
+          <FunctionImport Name="Select_Representant" ReturnType="Collection(GestionModel.Select_Representant_Result)">
+          <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Bon_Entree" ReturnType="Collection(Int32)">
+            <Parameter Name="be_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="be_Designation" Mode="In" Type="String" />
+            <Parameter Name="be_Reference" Mode="In" Type="String" />
+            <Parameter Name="be_PV" Mode="In" Type="String" />
+            <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+            <Parameter Name="rep_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Fournisseur" ReturnType="Collection(Int32)">
+            <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+            <Parameter Name="frns_Nom" Mode="In" Type="String" />
+            <Parameter Name="frns_Adresse" Mode="In" Type="String" />
+            <Parameter Name="frns_Adresse2" Mode="In" Type="String" />
+            <Parameter Name="frns_Code_Postal" Mode="In" Type="String" />
+            <Parameter Name="vil_ID" Mode="In" Type="Int32" />
+            <Parameter Name="frns_Email" Mode="In" Type="String" />
+            <Parameter Name="frns_GSM" Mode="In" Type="String" />
+            <Parameter Name="frns_GSM2" Mode="In" Type="String" />
+            <Parameter Name="frns_Fixe1" Mode="In" Type="String" />
+            <Parameter Name="frns_Fixe2" Mode="In" Type="String" />
+            <Parameter Name="frns_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Representant" ReturnType="Collection(Int32)">
+            <Parameter Name="rep_ID" Mode="In" Type="Int32" />
+            <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+            <Parameter Name="rep_Nom" Mode="In" Type="String" />
+            <Parameter Name="rep_Prenom" Mode="In" Type="String" />
+            <Parameter Name="rep_Cin" Mode="In" Type="String" />
+            <Parameter Name="rep_Tele" Mode="In" Type="String" />
+            <Parameter Name="rep_Observation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Show_Bon_Entree_By_ID" EntitySet="Bon_Entree" ReturnType="Collection(GestionModel.Bon_Entree)">
+          <Parameter Name="be_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Show_Bon_Entree_Article_By_ID" EntitySet="Bon_Entree_Article" ReturnType="Collection(GestionModel.Bon_Entree_Article)">
+          <Parameter Name="be_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MaxID_Bon_Entree_Article" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Delete_Bon_Entree_Article">
+          <Parameter Name="be_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Bon_Entree_Article" ReturnType="Collection(Int32)">
+            <Parameter Name="be_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_A_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="be_Qte_Livree" Mode="In" Type="Int32" />
+            <Parameter Name="be_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_A_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Bon_Entree_Article" ReturnType="Collection(Int32)">
+            <Parameter Name="be_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_A_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="be_Qte_Livree" Mode="In" Type="Int32" />
+            <Parameter Name="be_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_A_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Bon_Entree_Article" EntityType="GestionModel.Bon_Entree_Article" />
+          <AssociationSet Name="FK_Bon_Entree_Article_Bon_Entree" Association="GestionModel.FK_Bon_Entree_Article_Bon_Entree">
+            <End Role="Bon_Entree" EntitySet="Bon_Entree" />
+            <End Role="Bon_Entree_Article" EntitySet="Bon_Entree_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Entree_Article_Pneu" Association="GestionModel.FK_Bon_Entree_Article_Pneu">
+            <End Role="Pneu" EntitySet="Pneu" />
+            <End Role="Bon_Entree_Article" EntitySet="Bon_Entree_Article" />
+          </AssociationSet>
+          <FunctionImport Name="Insert_Operation" ReturnType="Collection(Int32)">
+            <Parameter Name="opera_ID" Mode="In" Type="Int32" />
+            <Parameter Name="opera_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="opera_Type" Mode="In" Type="String" />
+            <Parameter Name="opera_Qte" Mode="In" Type="Int32" />
+            <Parameter Name="bon_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Operation" ReturnType="Collection(Int32)">
+            <Parameter Name="opera_ID" Mode="In" Type="Int32" />
+            <Parameter Name="opera_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="opera_Type" Mode="In" Type="String" />
+            <Parameter Name="opera_Qte" Mode="In" Type="Int32" />
+            <Parameter Name="bon_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="be_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Operation" EntityType="GestionModel.Operation" />
+          <AssociationSet Name="FK_Operation_Operation" Association="GestionModel.FK_Operation_Operation">
+            <End Role="Pneu" EntitySet="Pneu" />
+            <End Role="Operation" EntitySet="Operation" />
+          </AssociationSet>
+          <FunctionImport Name="Historique_Bon_Entree" ReturnType="Collection(Int32)">
+          <Parameter Name="be_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Bon_Sortie">
+          <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Bon_Sortie" ReturnType="Collection(Int32)">
+            <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="bs_Designation" Mode="In" Type="String" />
+            <Parameter Name="bs_Reference" Mode="In" Type="String" />
+            <Parameter Name="unt_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Bon_Sortie_Article" ReturnType="Collection(Int32)">
+            <Parameter Name="bs_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_A_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="bs_Qte_Livree" Mode="In" Type="Int32" />
+            <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_A_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MaxID_Bon_Sortie" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="MaxID_Bon_Sortie_Article" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Select_Bon_Sortie" ReturnType="Collection(GestionModel.Select_Bon_Sortie_Result)" />
+          <FunctionImport Name="Select_Bon_Sortie_Article" ReturnType="Collection(GestionModel.Select_Bon_Sortie_Article_Result)">
+          <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Bon_Sortie" ReturnType="Collection(Int32)">
+            <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="bs_Designation" Mode="In" Type="String" />
+            <Parameter Name="bs_Reference" Mode="In" Type="String" />
+            <Parameter Name="unt_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Bon_Sortie_Article" ReturnType="Collection(Int32)">
+            <Parameter Name="bs_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_A_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="bs_Qte_Livree" Mode="In" Type="Int32" />
+            <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="bs_A_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Bon_Sortie" EntityType="GestionModel.Bon_Sortie" />
+          <EntitySet Name="Bon_Sortie_Article" EntityType="GestionModel.Bon_Sortie_Article" />
+          <EntitySet Name="Unite_Soutien" EntityType="GestionModel.Unite_Soutien" />
+          <AssociationSet Name="FK_Bon_Sortie_Article_Bon_Sortie" Association="GestionModel.FK_Bon_Sortie_Article_Bon_Sortie">
+            <End Role="Bon_Sortie" EntitySet="Bon_Sortie" />
+            <End Role="Bon_Sortie_Article" EntitySet="Bon_Sortie_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Sortie_Unite_Soutien" Association="GestionModel.FK_Bon_Sortie_Unite_Soutien">
+            <End Role="Unite_Soutien" EntitySet="Unite_Soutien" />
+            <End Role="Bon_Sortie" EntitySet="Bon_Sortie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Sortie_Article_Pneu" Association="GestionModel.FK_Bon_Sortie_Article_Pneu">
+            <End Role="Pneu" EntitySet="Pneu" />
+            <End Role="Bon_Sortie_Article" EntitySet="Bon_Sortie_Article" />
+          </AssociationSet>
+          <FunctionImport Name="Show_Bon_Sortie_Article_By_ID" EntitySet="Bon_Sortie_Article" ReturnType="Collection(GestionModel.Bon_Sortie_Article)">
+          <Parameter Name="bs_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Show_Bon_Sortie_By_ID" EntitySet="Bon_Sortie" ReturnType="Collection(GestionModel.Bon_Sortie)">
+          <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Historique_Bon_Entree_Article_H" ReturnType="Collection(GestionModel.Historique_Bon_Entree_Article_H_Result)">
+          <Parameter Name="be_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Historique_Bon_Entree_H" ReturnType="Collection(GestionModel.Historique_Bon_Entree_H_Result)" />
+          <FunctionImport Name="Historique_Bon_Sortie_Article_H" ReturnType="Collection(GestionModel.Historique_Bon_Sortie_Article_H_Result)">
+          <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Historique_Bon_Sortie_H" ReturnType="Collection(GestionModel.Historique_Bon_Sortie_H_Result)" />
+          <FunctionImport Name="Historique_Bon_Sortie" ReturnType="Collection(Int32)">
+          <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Historique_Bon_Sortie_Article">
+          <Parameter Name="bs_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Bon_Sortie_Article">
+          <Parameter Name="bs_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Unite_Soutien" ReturnType="Collection(GestionModel.Select_Unite_Soutien_Result)" />
+          <FunctionImport Name="ResteQteArticle" ReturnType="Collection(Int32)">
+          <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Bon_Retour">
+          <Parameter Name="br_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Bon_Retour_Article">
+          <Parameter Name="br_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Historique_Bon_Retour" ReturnType="Collection(Int32)">
+          <Parameter Name="br_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Historique_Bon_Retour_Article">
+          <Parameter Name="br_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Historique_Bon_Retour_Article_H" ReturnType="Collection(GestionModel.Historique_Bon_Retour_Article_H_Result)">
+          <Parameter Name="br_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Historique_Bon_Retour_H" ReturnType="Collection(GestionModel.Historique_Bon_Retour_H_Result)" />
+          <FunctionImport Name="Insert_Bon_Retour" ReturnType="Collection(Int32)">
+            <Parameter Name="br_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="br_Designation" Mode="In" Type="String" />
+            <Parameter Name="br_Reference" Mode="In" Type="String" />
+            <Parameter Name="br_PV" Mode="In" Type="String" />
+            <Parameter Name="unt_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MaxID_Bon_Retour" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="MaxID_Bon_Retour_Article" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Select_Bon_Retour" ReturnType="Collection(GestionModel.Select_Bon_Retour_Result)" />
+          <FunctionImport Name="Select_Bon_Retour_Article" ReturnType="Collection(GestionModel.Select_Bon_Retour_Article_Result)">
+          <Parameter Name="br_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Bon_Retour" ReturnType="Collection(Int32)">
+            <Parameter Name="br_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="br_Designation" Mode="In" Type="String" />
+            <Parameter Name="br_Reference" Mode="In" Type="String" />
+            <Parameter Name="br_PV" Mode="In" Type="String" />
+            <Parameter Name="unt_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Bon_Retour_Article" ReturnType="Collection(Int32)">
+            <Parameter Name="br_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_A_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="br_Qte_Livree" Mode="In" Type="Int32" />
+            <Parameter Name="br_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_A_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Bon_Retour" EntityType="GestionModel.Bon_Retour" />
+          <EntitySet Name="Bon_Retour_Article" EntityType="GestionModel.Bon_Retour_Article" />
+          <AssociationSet Name="FK_Bon_Retour_Article_Bon_Retour" Association="GestionModel.FK_Bon_Retour_Article_Bon_Retour">
+            <End Role="Bon_Retour" EntitySet="Bon_Retour" />
+            <End Role="Bon_Retour_Article" EntitySet="Bon_Retour_Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Retour_Unite_Soutien" Association="GestionModel.FK_Bon_Retour_Unite_Soutien">
+            <End Role="Unite_Soutien" EntitySet="Unite_Soutien" />
+            <End Role="Bon_Retour" EntitySet="Bon_Retour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bon_Retour_Article_Pneu" Association="GestionModel.FK_Bon_Retour_Article_Pneu">
+            <End Role="Pneu" EntitySet="Pneu" />
+            <End Role="Bon_Retour_Article" EntitySet="Bon_Retour_Article" />
+          </AssociationSet>
+          <FunctionImport Name="Show_Bon_Retour_Article_By_ID" EntitySet="Bon_Retour_Article" ReturnType="Collection(GestionModel.Bon_Retour_Article)">
+          <Parameter Name="br_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Show_Bon_Retour_By_ID" EntitySet="Bon_Retour" ReturnType="Collection(GestionModel.Bon_Retour)">
+          <Parameter Name="br_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Bon_Retour_Article" ReturnType="Collection(Int32)">
+            <Parameter Name="br_A_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_A_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="br_Qte_Livree" Mode="In" Type="Int32" />
+            <Parameter Name="br_ID" Mode="In" Type="Int32" />
+            <Parameter Name="pne_ID" Mode="In" Type="Int32" />
+            <Parameter Name="br_A_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Operation_By_Operation" ReturnType="Collection(GestionModel.Select_Operation_By_Operation_Result)">
+            <Parameter Name="TypeBon" Mode="In" Type="String" />
+            <Parameter Name="pne_Designation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="Count_Fournisseur" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Search_Fournisseur">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Representant" ReturnType="Collection(GestionModel.Search_Representant_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Show_Fournisseur_By_ID" EntitySet="Fournisseur" ReturnType="Collection(GestionModel.Fournisseur)">
+          <Parameter Name="frns_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Show_Representant_By_ID" EntitySet="Representant" ReturnType="Collection(GestionModel.Representant)">
+          <Parameter Name="rep_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Ville" EntityType="GestionModel.Ville" />
+          <FunctionImport Name="Delete_Ville">
+          <Parameter Name="vil_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Ville" ReturnType="Collection(Int32)">
+            <Parameter Name="vil_ID" Mode="In" Type="Int32" />
+            <Parameter Name="vil_Nom" Mode="In" Type="String" />
+            <Parameter Name="vil_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MaxID_Ville" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Search_Ville" ReturnType="Collection(GestionModel.Search_Ville_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Ville" ReturnType="Collection(GestionModel.Select_Ville_Result)" />
+          <FunctionImport Name="Update_Ville" ReturnType="Collection(Int32)">
+            <Parameter Name="vil_ID" Mode="In" Type="Int32" />
+            <Parameter Name="vil_Nom" Mode="In" Type="String" />
+            <Parameter Name="vil_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Show_Ville_By_ID" EntitySet="Ville" ReturnType="Collection(GestionModel.Ville)">
+          <Parameter Name="vil_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Count_Ville" ReturnType="Collection(Int32)" />
+          <AssociationSet Name="FK_Unite_Soutien_Ville" Association="GestionModel.FK_Unite_Soutien_Ville">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Unite_Soutien" EntitySet="Unite_Soutien" />
+          </AssociationSet>
+          <FunctionImport Name="Count_Unite_Soutien" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Delete_Unite_Soutien">
+          <Parameter Name="unt_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Unite_Soutien" ReturnType="Collection(Int32)">
+            <Parameter Name="unt_ID" Mode="In" Type="Int32" />
+            <Parameter Name="unt_Unite" Mode="In" Type="String" />
+            <Parameter Name="vil_ID" Mode="In" Type="Int32" />
+            <Parameter Name="unt_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MaxID_Unite_Soutien" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Search_Unite_Soutien" ReturnType="Collection(GestionModel.Search_Unite_Soutien_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Unite_Soutien" ReturnType="Collection(Int32)">
+            <Parameter Name="unt_ID" Mode="In" Type="Int32" />
+            <Parameter Name="unt_Unite" Mode="In" Type="String" />
+            <Parameter Name="vil_ID" Mode="In" Type="Int32" />
+            <Parameter Name="unt_Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Show_Unite_Soutien_By_ID" EntitySet="Unite_Soutien" ReturnType="Collection(GestionModel.Unite_Soutien)">
+          <Parameter Name="unt_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Count_Pneu" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Search_Bon_Entree" ReturnType="Collection(GestionModel.Search_Bon_Entree_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Count_Bon_Entree" ReturnType="Collection(Int32)">
+          <Parameter Name="be_Historique" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Count_Bon_Entree_Article" ReturnType="Collection(Int32)">
+          <Parameter Name="be_A_Historique" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Entree_Article" ReturnType="Collection(GestionModel.Search_Bon_Entree_Article_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="be_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Entree_Article_H" ReturnType="Collection(GestionModel.Search_Bon_Entree_Article_H_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="be_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Entree_H" ReturnType="Collection(GestionModel.Search_Bon_Entree_H_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Retour" ReturnType="Collection(GestionModel.Search_Bon_Retour_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Retour_Article" ReturnType="Collection(GestionModel.Search_Bon_Retour_Article_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="br_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Retour_Article_H" ReturnType="Collection(GestionModel.Search_Bon_Retour_Article_H_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="br_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Retour_H" ReturnType="Collection(GestionModel.Search_Bon_Retour_H_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Sortie" ReturnType="Collection(GestionModel.Search_Bon_Sortie_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Sortie_Article" ReturnType="Collection(GestionModel.Search_Bon_Sortie_Article_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Sortie_Article_H" ReturnType="Collection(GestionModel.Search_Bon_Sortie_Article_H_Result)">
+            <Parameter Name="Search" Mode="In" Type="String" />
+            <Parameter Name="bs_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Search_Bon_Sortie_H" ReturnType="Collection(GestionModel.Search_Bon_Sortie_H_Result)">
+          <Parameter Name="Search" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Historique_Bon_Entree_Article">
+            <Parameter Name="be_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Select_Operation_By_Type_Result">
+          <Property Type="Int32" Name="opera_ID" Nullable="false" />
+          <Property Type="DateTime" Name="opera_Date" Nullable="true" />
+          <Property Type="Int32" Name="pne_Qte" Nullable="true" />
+          <Property Type="String" Name="opera_BL" Nullable="true" />
+          <Property Type="String" Name="opera_Reference" Nullable="true" />
+          <Property Type="String" Name="opera_Observation" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Pneu_Result">
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="String" Name="pne_Marque" Nullable="true" />
+          <Property Type="DateTime" Name="pne_Date_Production" Nullable="true" />
+          <Property Type="String" Name="pne_Observation" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SommeQte_Result">
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="mvt_Qte" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Operation_By_ID_Result">
+          <Property Type="Int32" Name="opera_ID" Nullable="false" />
+          <Property Type="DateTime" Name="opera_Date" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="true" />
+          <Property Type="String" Name="opera_Type" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="pne_Qte" Nullable="true" />
+          <Property Type="String" Name="opera_BL" Nullable="true" />
+          <Property Type="String" Name="opera_Reference" Nullable="true" />
+          <Property Type="String" Name="opera_Observation" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Bon_Entree">
+          <Key>
+            <PropertyRef Name="be_ID" />
+          </Key>
+          <Property Name="be_ID" Type="Int32" Nullable="false" />
+          <Property Name="be_Date" Type="DateTime" Precision="0" />
+          <Property Name="be_Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="be_Reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="be_PV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_ID" Type="Int32" />
+          <Property Name="rep_ID" Type="Int32" />
+          <Property Name="be_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Fournisseur" Relationship="GestionModel.FK_Bon_Entree_Fournisseur" FromRole="Bon_Entree" ToRole="Fournisseur" />
+          <NavigationProperty Name="Representant" Relationship="GestionModel.FK_Bon_Entree_Representant" FromRole="Bon_Entree" ToRole="Representant" />
+          <Property Name="be_Historique" Type="Boolean" />
+          <NavigationProperty Name="Bon_Entree_Article" Relationship="GestionModel.FK_Bon_Entree_Article_Bon_Entree" FromRole="Bon_Entree" ToRole="Bon_Entree_Article" />
+        </EntityType>
+        <EntityType Name="Fournisseur">
+          <Key>
+            <PropertyRef Name="frns_ID" />
+          </Key>
+          <Property Name="frns_ID" Type="Int32" Nullable="false" />
+          <Property Name="frns_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Adresse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Adresse2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Code_Postal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vil_ID" Type="Int32" />
+          <Property Name="frns_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_GSM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_GSM2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Fixe1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Fixe2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="frns_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bon_Entree" Relationship="GestionModel.FK_Bon_Entree_Fournisseur" FromRole="Fournisseur" ToRole="Bon_Entree" />
+          <NavigationProperty Name="Representant" Relationship="GestionModel.FK_Representant_Fournisseur" FromRole="Fournisseur" ToRole="Representant" />
+        </EntityType>
+        <EntityType Name="Representant">
+          <Key>
+            <PropertyRef Name="rep_ID" />
+          </Key>
+          <Property Name="rep_ID" Type="Int32" Nullable="false" />
+          <Property Name="frns_ID" Type="Int32" />
+          <Property Name="rep_Nom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rep_Prenom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rep_Cin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="rep_Tele" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rep_Observation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bon_Entree" Relationship="GestionModel.FK_Bon_Entree_Representant" FromRole="Representant" ToRole="Bon_Entree" />
+          <NavigationProperty Name="Fournisseur" Relationship="GestionModel.FK_Representant_Fournisseur" FromRole="Representant" ToRole="Fournisseur" />
+        </EntityType>
+        <Association Name="FK_Bon_Entree_Fournisseur">
+          <End Type="GestionModel.Fournisseur" Role="Fournisseur" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Entree" Role="Bon_Entree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="frns_ID" />
+            </Principal>
+            <Dependent Role="Bon_Entree">
+              <PropertyRef Name="frns_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Entree_Representant">
+          <End Type="GestionModel.Representant" Role="Representant" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Entree" Role="Bon_Entree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Representant">
+              <PropertyRef Name="rep_ID" />
+            </Principal>
+            <Dependent Role="Bon_Entree">
+              <PropertyRef Name="rep_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Representant_Fournisseur">
+          <End Type="GestionModel.Fournisseur" Role="Fournisseur" Multiplicity="0..1" />
+          <End Type="GestionModel.Representant" Role="Representant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="frns_ID" />
+            </Principal>
+            <Dependent Role="Representant">
+              <PropertyRef Name="frns_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Select_Bon_Entree_Result">
+          <Property Type="Int32" Name="be_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_Date" Nullable="true" />
+          <Property Type="String" Name="be_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="be_Reference" Nullable="true" />
+          <Property Type="String" Name="be_PV" Nullable="true" />
+          <Property Type="Int32" Name="frns_ID" Nullable="true" />
+          <Property Type="Int32" Name="rep_ID" Nullable="true" />
+          <Property Type="String" Name="be_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Bon_Entree_Article_Result">
+          <Property Type="Int32" Name="be_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_A_Date" Nullable="true" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="be_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="be_ID" Nullable="true" />
+          <Property Type="String" Name="be_A_Description" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Select_Fournisseur_Result">
+          <Property Type="Int32" Name="frns_ID" Nullable="false" />
+          <Property Type="String" Name="frns_Nom" Nullable="true" />
+          <Property Type="String" Name="frns_Adresse" Nullable="true" />
+          <Property Type="String" Name="frns_Adresse2" Nullable="true" />
+          <Property Type="String" Name="frns_Code_Postal" Nullable="true" />
+          <Property Type="String" Name="frns_Email" Nullable="true" />
+          <Property Type="String" Name="frns_GSM" Nullable="true" />
+          <Property Type="String" Name="frns_GSM2" Nullable="true" />
+          <Property Type="String" Name="frns_Fixe1" Nullable="true" />
+          <Property Type="String" Name="frns_Fixe2" Nullable="true" />
+          <Property Type="String" Name="frns_Description" Nullable="true" />
+          <Property Type="String" Name="vil_Nom" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="Select_Representant_Result">
+          <Property Type="Int32" Name="rep_ID" Nullable="false" />
+          <Property Type="String" Name="frns_Nom" Nullable="true" />
+          <Property Type="String" Name="rep_Nom" Nullable="true" />
+          <Property Type="String" Name="rep_Prenom" Nullable="true" />
+          <Property Type="String" Name="rep_Cin" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="rep_Tele" Nullable="true" />
+          <Property Type="String" Name="rep_Observation" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Bon_Entree_Article">
+          <Key>
+            <PropertyRef Name="be_A_ID" />
+          </Key>
+          <Property Name="be_A_ID" Type="Int32" Nullable="false" />
+          <Property Name="be_A_Date" Type="DateTime" Precision="0" />
+          <Property Name="be_Qte_Livree" Type="Int32" />
+          <Property Name="be_ID" Type="Int32" />
+          <Property Name="pne_ID" Type="Int32" />
+          <Property Name="be_A_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bon_Entree" Relationship="GestionModel.FK_Bon_Entree_Article_Bon_Entree" FromRole="Bon_Entree_Article" ToRole="Bon_Entree" />
+          <NavigationProperty Name="Pneu" Relationship="GestionModel.FK_Bon_Entree_Article_Pneu" FromRole="Bon_Entree_Article" ToRole="Pneu" />
+          <Property Name="be_A_Historique" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_Bon_Entree_Article_Bon_Entree">
+          <End Type="GestionModel.Bon_Entree" Role="Bon_Entree" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Entree_Article" Role="Bon_Entree_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bon_Entree">
+              <PropertyRef Name="be_ID" />
+            </Principal>
+            <Dependent Role="Bon_Entree_Article">
+              <PropertyRef Name="be_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Entree_Article_Pneu">
+          <End Type="GestionModel.Pneu" Role="Pneu" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Entree_Article" Role="Bon_Entree_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pneu">
+              <PropertyRef Name="pne_ID" />
+            </Principal>
+            <Dependent Role="Bon_Entree_Article">
+              <PropertyRef Name="pne_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Operation">
+          <Key>
+            <PropertyRef Name="opera_ID" />
+          </Key>
+          <Property Name="opera_ID" Type="Int32" Nullable="false" />
+          <Property Name="opera_Date" Type="DateTime" Precision="0" />
+          <Property Name="pne_ID" Type="Int32" />
+          <Property Name="opera_Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="opera_Qte" Type="Int32" />
+          <Property Name="bon_ID" Type="Int32" />
+          <Property Name="bs_A_ID" Type="Int32" />
+          <Property Name="be_A_ID" Type="Int32" />
+          <NavigationProperty Name="Pneu" Relationship="GestionModel.FK_Operation_Operation" FromRole="Operation" ToRole="Pneu" />
+          <Property Name="br_A_ID" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Operation_Operation">
+          <End Type="GestionModel.Pneu" Role="Pneu" Multiplicity="0..1" />
+          <End Type="GestionModel.Operation" Role="Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pneu">
+              <PropertyRef Name="pne_ID" />
+            </Principal>
+            <Dependent Role="Operation">
+              <PropertyRef Name="pne_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Select_Bon_Sortie_Result">
+          <Property Type="Int32" Name="bs_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_Date" Nullable="true" />
+          <Property Type="String" Name="bs_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="bs_Reference" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="bs_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Bon_Sortie_Article_Result">
+          <Property Type="Int32" Name="bs_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="bs_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="bs_ID" Nullable="true" />
+          <Property Type="String" Name="bs_A_Description" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Bon_Sortie">
+          <Key>
+            <PropertyRef Name="bs_ID" />
+          </Key>
+          <Property Name="bs_ID" Type="Int32" Nullable="false" />
+          <Property Name="bs_Date" Type="DateTime" Precision="0" />
+          <Property Name="bs_Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bs_Reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unt_ID" Type="Int32" />
+          <Property Name="bs_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bs_Historique" Type="Boolean" />
+          <NavigationProperty Name="Bon_Sortie_Article" Relationship="GestionModel.FK_Bon_Sortie_Article_Bon_Sortie" FromRole="Bon_Sortie" ToRole="Bon_Sortie_Article" />
+          <NavigationProperty Name="Unite_Soutien" Relationship="GestionModel.FK_Bon_Sortie_Unite_Soutien" FromRole="Bon_Sortie" ToRole="Unite_Soutien" />
+        </EntityType>
+        <EntityType Name="Bon_Sortie_Article">
+          <Key>
+            <PropertyRef Name="bs_A_ID" />
+          </Key>
+          <Property Name="bs_A_ID" Type="Int32" Nullable="false" />
+          <Property Name="bs_A_Date" Type="DateTime" Precision="0" />
+          <Property Name="bs_Qte_Livree" Type="Int32" />
+          <Property Name="bs_ID" Type="Int32" />
+          <Property Name="pne_ID" Type="Int32" />
+          <Property Name="bs_A_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bs_A_Historique" Type="Boolean" />
+          <NavigationProperty Name="Bon_Sortie" Relationship="GestionModel.FK_Bon_Sortie_Article_Bon_Sortie" FromRole="Bon_Sortie_Article" ToRole="Bon_Sortie" />
+          <NavigationProperty Name="Pneu" Relationship="GestionModel.FK_Bon_Sortie_Article_Pneu" FromRole="Bon_Sortie_Article" ToRole="Pneu" />
+        </EntityType>
+        <EntityType Name="Unite_Soutien">
+          <Key>
+            <PropertyRef Name="unt_ID" />
+          </Key>
+          <Property Name="unt_ID" Type="Int32" Nullable="false" />
+          <Property Name="unt_Unite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unt_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unt_status" Type="Boolean" />
+          <NavigationProperty Name="Bon_Sortie" Relationship="GestionModel.FK_Bon_Sortie_Unite_Soutien" FromRole="Unite_Soutien" ToRole="Bon_Sortie" />
+          <NavigationProperty Name="Bon_Retour" Relationship="GestionModel.FK_Bon_Retour_Unite_Soutien" FromRole="Unite_Soutien" ToRole="Bon_Retour" />
+          <Property Name="vil_ID" Type="Int32" />
+          <NavigationProperty Name="Ville" Relationship="GestionModel.FK_Unite_Soutien_Ville" FromRole="Unite_Soutien" ToRole="Ville" />
+        </EntityType>
+        <Association Name="FK_Bon_Sortie_Article_Bon_Sortie">
+          <End Type="GestionModel.Bon_Sortie" Role="Bon_Sortie" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Sortie_Article" Role="Bon_Sortie_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bon_Sortie">
+              <PropertyRef Name="bs_ID" />
+            </Principal>
+            <Dependent Role="Bon_Sortie_Article">
+              <PropertyRef Name="bs_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Sortie_Unite_Soutien">
+          <End Type="GestionModel.Unite_Soutien" Role="Unite_Soutien" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Sortie" Role="Bon_Sortie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unite_Soutien">
+              <PropertyRef Name="unt_ID" />
+            </Principal>
+            <Dependent Role="Bon_Sortie">
+              <PropertyRef Name="unt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Sortie_Article_Pneu">
+          <End Type="GestionModel.Pneu" Role="Pneu" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Sortie_Article" Role="Bon_Sortie_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pneu">
+              <PropertyRef Name="pne_ID" />
+            </Principal>
+            <Dependent Role="Bon_Sortie_Article">
+              <PropertyRef Name="pne_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Select_Bon_Sortie_H_Result">
+          <Property Type="Int32" Name="bs_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_Date" Nullable="true" />
+          <Property Type="String" Name="bs_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="bs_Reference" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="bs_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Historique_Bon_Entree_Article_H_Result">
+          <Property Type="Int32" Name="be_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="be_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="be_ID" Nullable="true" />
+          <Property Type="String" Name="be_A_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Historique_Bon_Entree_H_Result">
+          <Property Type="Int32" Name="be_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_Date" Nullable="true" />
+          <Property Type="String" Name="be_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="be_Reference" Nullable="true" />
+          <Property Type="String" Name="be_PV" Nullable="true" />
+          <Property Type="Int32" Name="frns_ID" Nullable="true" />
+          <Property Type="Int32" Name="rep_ID" Nullable="true" />
+          <Property Type="String" Name="be_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Historique_Bon_Sortie_Article_H_Result">
+          <Property Type="Int32" Name="bs_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="bs_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="bs_ID" Nullable="true" />
+          <Property Type="String" Name="bs_A_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Historique_Bon_Sortie_H_Result">
+          <Property Type="Int32" Name="bs_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_Date" Nullable="true" />
+          <Property Type="String" Name="bs_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="bs_Reference" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="bs_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Unite_Soutien_Result">
+          <Property Type="Int32" Name="unt_ID" Nullable="false" />
+          <Property Type="String" Name="unt_Unite" Nullable="true" />
+          <Property Type="String" Name="unt_Description" Nullable="true" />
+          <Property Type="Boolean" Name="unt_status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Historique_Bon_Retour_Article_H_Result">
+          <Property Type="Int32" Name="br_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="br_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="br_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="br_ID" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="br_A_Description" Nullable="true" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Historique_Bon_Retour_H_Result">
+          <Property Type="Int32" Name="br_ID" Nullable="false" />
+          <Property Type="DateTime" Name="br_Date" Nullable="true" />
+          <Property Type="String" Name="br_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="br_Reference" Nullable="true" />
+          <Property Type="String" Name="br_PV" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="br_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Bon_Retour_Result">
+          <Property Type="Int32" Name="br_ID" Nullable="false" />
+          <Property Type="DateTime" Name="br_Date" Nullable="true" />
+          <Property Type="String" Name="br_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="br_Reference" Nullable="true" />
+          <Property Type="String" Name="br_PV" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="br_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Bon_Retour_Article_Result">
+          <Property Type="Int32" Name="br_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="br_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="br_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="br_ID" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="br_A_Description" Nullable="true" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Bon_Retour">
+          <Key>
+            <PropertyRef Name="br_ID" />
+          </Key>
+          <Property Name="br_ID" Type="Int32" Nullable="false" />
+          <Property Name="br_Date" Type="DateTime" Precision="0" />
+          <Property Name="br_Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="br_Reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="br_PV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unt_ID" Type="Int32" />
+          <Property Name="br_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="br_Historique" Type="Boolean" />
+          <NavigationProperty Name="Bon_Retour_Article" Relationship="GestionModel.FK_Bon_Retour_Article_Bon_Retour" FromRole="Bon_Retour" ToRole="Bon_Retour_Article" />
+          <NavigationProperty Name="Unite_Soutien" Relationship="GestionModel.FK_Bon_Retour_Unite_Soutien" FromRole="Bon_Retour" ToRole="Unite_Soutien" />
+        </EntityType>
+        <EntityType Name="Bon_Retour_Article">
+          <Key>
+            <PropertyRef Name="br_A_ID" />
+          </Key>
+          <Property Name="br_A_ID" Type="Int32" Nullable="false" />
+          <Property Name="br_A_Date" Type="DateTime" Precision="0" />
+          <Property Name="br_Qte_Livree" Type="Int32" />
+          <Property Name="br_ID" Type="Int32" />
+          <Property Name="pne_ID" Type="Int32" />
+          <Property Name="br_A_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="br_A_Historique" Type="Boolean" />
+          <NavigationProperty Name="Bon_Retour" Relationship="GestionModel.FK_Bon_Retour_Article_Bon_Retour" FromRole="Bon_Retour_Article" ToRole="Bon_Retour" />
+          <NavigationProperty Name="Pneu" Relationship="GestionModel.FK_Bon_Retour_Article_Pneu" FromRole="Bon_Retour_Article" ToRole="Pneu" />
+        </EntityType>
+        <Association Name="FK_Bon_Retour_Article_Bon_Retour">
+          <End Type="GestionModel.Bon_Retour" Role="Bon_Retour" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Retour_Article" Role="Bon_Retour_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bon_Retour">
+              <PropertyRef Name="br_ID" />
+            </Principal>
+            <Dependent Role="Bon_Retour_Article">
+              <PropertyRef Name="br_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Retour_Unite_Soutien">
+          <End Type="GestionModel.Unite_Soutien" Role="Unite_Soutien" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Retour" Role="Bon_Retour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unite_Soutien">
+              <PropertyRef Name="unt_ID" />
+            </Principal>
+            <Dependent Role="Bon_Retour">
+              <PropertyRef Name="unt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bon_Retour_Article_Pneu">
+          <End Type="GestionModel.Pneu" Role="Pneu" Multiplicity="0..1" />
+          <End Type="GestionModel.Bon_Retour_Article" Role="Bon_Retour_Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pneu">
+              <PropertyRef Name="pne_ID" />
+            </Principal>
+            <Dependent Role="Bon_Retour_Article">
+              <PropertyRef Name="pne_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Select_Operation_By_Operation_Result">
+          <Property Type="Int32" Name="opera_ID" Nullable="false" />
+          <Property Type="Int32" Name="bon_ID" Nullable="true" />
+          <Property Type="DateTime" Name="opera_Date" Nullable="true" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="opera_Qte" Nullable="true" />
+          <Property Type="String" Name="be_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="be_Reference" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Representant_Result">
+          <Property Type="Int32" Name="rep_ID" Nullable="false" />
+          <Property Type="String" Name="frns_Nom" Nullable="true" />
+          <Property Type="String" Name="rep_Nom" Nullable="true" />
+          <Property Type="String" Name="rep_Prenom" Nullable="true" />
+          <Property Type="String" Name="rep_Cin" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="rep_Tele" Nullable="true" />
+          <Property Type="String" Name="rep_Observation" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="vil_ID" />
+          </Key>
+          <Property Name="vil_ID" Type="Int32" Nullable="false" />
+          <Property Name="vil_Nom" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="vil_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vil_Status" Type="Boolean" />
+          <NavigationProperty Name="Unite_Soutien" Relationship="GestionModel.FK_Unite_Soutien_Ville" FromRole="Ville" ToRole="Unite_Soutien" />
+        </EntityType>
+        <ComplexType Name="Search_Ville_Result">
+          <Property Type="Int32" Name="vil_ID" Nullable="false" />
+          <Property Type="String" Name="vil_Nom" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="vil_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Ville_Result">
+          <Property Type="Int32" Name="vil_ID" Nullable="false" />
+          <Property Type="String" Name="vil_Nom" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="vil_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Show_Ville_By_ID_Result">
+          <Property Type="Int32" Name="vil_ID" Nullable="false" />
+          <Property Type="String" Name="vil_Nom" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="vil_Description" Nullable="true" />
+          <Property Type="Boolean" Name="vil_Status" Nullable="true" />
+        </ComplexType>
+        <Association Name="FK_Unite_Soutien_Ville">
+          <End Type="GestionModel.Ville" Role="Ville" Multiplicity="0..1" />
+          <End Type="GestionModel.Unite_Soutien" Role="Unite_Soutien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="vil_ID" />
+            </Principal>
+            <Dependent Role="Unite_Soutien">
+              <PropertyRef Name="vil_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Search_Unite_Soutien_Result">
+          <Property Type="Int32" Name="unt_ID" Nullable="false" />
+          <Property Type="String" Name="unt_Unite" Nullable="true" />
+          <Property Type="String" Name="vil_Nom" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="unt_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Entree_Result">
+          <Property Type="Int32" Name="be_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_Date" Nullable="true" />
+          <Property Type="String" Name="be_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="be_Reference" Nullable="true" />
+          <Property Type="String" Name="be_PV" Nullable="true" />
+          <Property Type="Int32" Name="frns_ID" Nullable="true" />
+          <Property Type="Int32" Name="rep_ID" Nullable="true" />
+          <Property Type="String" Name="be_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Entree_Article_Result">
+          <Property Type="Int32" Name="be_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="be_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="be_ID" Nullable="true" />
+          <Property Type="String" Name="be_A_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Entree_Article_H_Result">
+          <Property Type="Int32" Name="be_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="be_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="be_ID" Nullable="true" />
+          <Property Type="String" Name="be_A_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Entree_H_Result">
+          <Property Type="Int32" Name="be_ID" Nullable="false" />
+          <Property Type="DateTime" Name="be_Date" Nullable="true" />
+          <Property Type="String" Name="be_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="be_Reference" Nullable="true" />
+          <Property Type="String" Name="be_PV" Nullable="true" />
+          <Property Type="Int32" Name="frns_ID" Nullable="true" />
+          <Property Type="Int32" Name="rep_ID" Nullable="true" />
+          <Property Type="String" Name="be_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Retour_Result">
+          <Property Type="Int32" Name="br_ID" Nullable="false" />
+          <Property Type="DateTime" Name="br_Date" Nullable="true" />
+          <Property Type="String" Name="br_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="br_Reference" Nullable="true" />
+          <Property Type="String" Name="br_PV" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="br_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Retour_Article_Result">
+          <Property Type="Int32" Name="br_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="br_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="br_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="br_ID" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="String" Name="br_A_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Retour_Article_H_Result">
+          <Property Type="Int32" Name="br_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="br_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="br_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="br_ID" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="String" Name="br_A_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Retour_H_Result">
+          <Property Type="Int32" Name="br_ID" Nullable="false" />
+          <Property Type="DateTime" Name="br_Date" Nullable="true" />
+          <Property Type="String" Name="br_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="br_Reference" Nullable="true" />
+          <Property Type="String" Name="br_PV" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="br_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Sortie_Result">
+          <Property Type="Int32" Name="bs_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_Date" Nullable="true" />
+          <Property Type="String" Name="bs_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="bs_Reference" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="bs_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Sortie_Article_Result">
+          <Property Type="Int32" Name="bs_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="bs_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="bs_ID" Nullable="true" />
+          <Property Type="String" Name="bs_A_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Sortie_Article_H_Result">
+          <Property Type="Int32" Name="bs_A_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_A_Date" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="bs_Qte_Livree" Nullable="true" />
+          <Property Type="Int32" Name="bs_ID" Nullable="true" />
+          <Property Type="String" Name="bs_A_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Search_Bon_Sortie_H_Result">
+          <Property Type="Int32" Name="bs_ID" Nullable="false" />
+          <Property Type="DateTime" Name="bs_Date" Nullable="true" />
+          <Property Type="String" Name="bs_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="bs_Reference" Nullable="true" />
+          <Property Type="Int32" Name="unt_ID" Nullable="true" />
+          <Property Type="String" Name="bs_Description" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GestionModelStoreContainer" CdmEntityContainer="GestionEntities">
+          <EntitySetMapping Name="Pneu">
+            <EntityTypeMapping TypeName="GestionModel.Pneu">
+              <MappingFragment StoreEntitySet="Pneu">
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="pne_Marque" ColumnName="pne_Marque" />
+                <ScalarProperty Name="pne_Date_Production" ColumnName="pne_Date_Production" />
+                <ScalarProperty Name="pne_Observation" ColumnName="pne_Observation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Delete_Operation" FunctionName="GestionModel.Store.Delete_Operation" />
+          <FunctionImportMapping FunctionImportName="Delete_Pneu" FunctionName="GestionModel.Store.Delete_Pneu" />
+          <FunctionImportMapping FunctionImportName="Insert_Pneu" FunctionName="GestionModel.Store.Insert_Pneu" />
+          <FunctionImportMapping FunctionImportName="MaxID_Operation" FunctionName="GestionModel.Store.MaxID_Operation" />
+          <FunctionImportMapping FunctionImportName="MaxID_Pneu" FunctionName="GestionModel.Store.MaxID_Pneu" />
+          <FunctionImportMapping FunctionImportName="Select_Pneu" FunctionName="GestionModel.Store.Select_Pneu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Pneu_Result">
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="pne_Marque" ColumnName="pne_Marque" />
+                <ScalarProperty Name="pne_Date_Production" ColumnName="pne_Date_Production" />
+                <ScalarProperty Name="pne_Observation" ColumnName="pne_Observation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SommeQte" FunctionName="GestionModel.Store.SommeQte">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.SommeQte_Result">
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="mvt_Qte" ColumnName="mvt_Qte" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Pneu" FunctionName="GestionModel.Store.Update_Pneu" />
+          <FunctionImportMapping FunctionImportName="Show_Pneu_By_ID" FunctionName="GestionModel.Store.Show_Pneu_By_ID" />
+          <EntitySetMapping Name="Bon_Entree">
+            <EntityTypeMapping TypeName="GestionModel.Bon_Entree">
+              <MappingFragment StoreEntitySet="Bon_Entree">
+                <ScalarProperty Name="be_Historique" ColumnName="be_Historique" />
+                <ScalarProperty Name="be_Description" ColumnName="be_Description" />
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="be_PV" ColumnName="be_PV" />
+                <ScalarProperty Name="be_Reference" ColumnName="be_Reference" />
+                <ScalarProperty Name="be_Designation" ColumnName="be_Designation" />
+                <ScalarProperty Name="be_Date" ColumnName="be_Date" />
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fournisseur">
+            <EntityTypeMapping TypeName="GestionModel.Fournisseur">
+              <MappingFragment StoreEntitySet="Fournisseur">
+                <ScalarProperty Name="frns_Description" ColumnName="frns_Description" />
+                <ScalarProperty Name="frns_Fixe2" ColumnName="frns_Fixe2" />
+                <ScalarProperty Name="frns_Fixe1" ColumnName="frns_Fixe1" />
+                <ScalarProperty Name="frns_GSM2" ColumnName="frns_GSM2" />
+                <ScalarProperty Name="frns_GSM" ColumnName="frns_GSM" />
+                <ScalarProperty Name="frns_Email" ColumnName="frns_Email" />
+                <ScalarProperty Name="vil_ID" ColumnName="vil_ID" />
+                <ScalarProperty Name="frns_Code_Postal" ColumnName="frns_Code_Postal" />
+                <ScalarProperty Name="frns_Adresse2" ColumnName="frns_Adresse2" />
+                <ScalarProperty Name="frns_Adresse" ColumnName="frns_Adresse" />
+                <ScalarProperty Name="frns_Nom" ColumnName="frns_Nom" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Representant">
+            <EntityTypeMapping TypeName="GestionModel.Representant">
+              <MappingFragment StoreEntitySet="Representant">
+                <ScalarProperty Name="rep_Observation" ColumnName="rep_Observation" />
+                <ScalarProperty Name="rep_Tele" ColumnName="rep_Tele" />
+                <ScalarProperty Name="rep_Cin" ColumnName="rep_Cin" />
+                <ScalarProperty Name="rep_Prenom" ColumnName="rep_Prenom" />
+                <ScalarProperty Name="rep_Nom" ColumnName="rep_Nom" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Delete_Bon_Entree" FunctionName="GestionModel.Store.Delete_Bon_Entree" />
+          <FunctionImportMapping FunctionImportName="Delete_Fournisseur" FunctionName="GestionModel.Store.Delete_Fournisseur" />
+          <FunctionImportMapping FunctionImportName="Delete_Representant" FunctionName="GestionModel.Store.Delete_Representant" />
+          <FunctionImportMapping FunctionImportName="Delete_Representant_All" FunctionName="GestionModel.Store.Delete_Representant_All" />
+          <FunctionImportMapping FunctionImportName="Insert_Bon_Entree" FunctionName="GestionModel.Store.Insert_Bon_Entree" />
+          <FunctionImportMapping FunctionImportName="Insert_Fournisseur" FunctionName="GestionModel.Store.Insert_Fournisseur" />
+          <FunctionImportMapping FunctionImportName="Insert_Representant" FunctionName="GestionModel.Store.Insert_Representant" />
+          <FunctionImportMapping FunctionImportName="MaxID_Bon_Entree" FunctionName="GestionModel.Store.MaxID_Bon_Entree" />
+          <FunctionImportMapping FunctionImportName="MaxID_Fournisseur" FunctionName="GestionModel.Store.MaxID_Fournisseur" />
+          <FunctionImportMapping FunctionImportName="MaxID_Representant" FunctionName="GestionModel.Store.MaxID_Representant" />
+          <FunctionImportMapping FunctionImportName="Select_Bon_Entree" FunctionName="GestionModel.Store.Select_Bon_Entree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Bon_Entree_Result">
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_Date" ColumnName="be_Date" />
+                <ScalarProperty Name="be_Designation" ColumnName="be_Designation" />
+                <ScalarProperty Name="be_Reference" ColumnName="be_Reference" />
+                <ScalarProperty Name="be_PV" ColumnName="be_PV" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+                <ScalarProperty Name="be_Description" ColumnName="be_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Bon_Entree_Article" FunctionName="GestionModel.Store.Select_Bon_Entree_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Bon_Entree_Article_Result">
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+                <ScalarProperty Name="be_A_Date" ColumnName="be_A_Date" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="be_Qte_Livree" ColumnName="be_Qte_Livree" />
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_A_Description" ColumnName="be_A_Description" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Fournisseur" FunctionName="GestionModel.Store.Select_Fournisseur" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Fournisseur_Result">
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="frns_Nom" ColumnName="frns_Nom" />
+                <ScalarProperty Name="frns_Adresse" ColumnName="frns_Adresse" />
+                <ScalarProperty Name="frns_Adresse2" ColumnName="frns_Adresse2" />
+                <ScalarProperty Name="frns_Code_Postal" ColumnName="frns_Code_Postal" />
+                <ScalarProperty Name="frns_Email" ColumnName="frns_Email" />
+                <ScalarProperty Name="frns_GSM" ColumnName="frns_GSM" />
+                <ScalarProperty Name="frns_GSM2" ColumnName="frns_GSM2" />
+                <ScalarProperty Name="frns_Fixe1" ColumnName="frns_Fixe1" />
+                <ScalarProperty Name="frns_Fixe2" ColumnName="frns_Fixe2" />
+                <ScalarProperty Name="frns_Description" ColumnName="frns_Description" />
+                <ScalarProperty Name="vil_Nom" ColumnName="vil_Nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Representant" FunctionName="GestionModel.Store.Select_Representant" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Representant_Result">
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+                <ScalarProperty Name="frns_Nom" ColumnName="frns_Nom" />
+                <ScalarProperty Name="rep_Nom" ColumnName="rep_Nom" />
+                <ScalarProperty Name="rep_Prenom" ColumnName="rep_Prenom" />
+                <ScalarProperty Name="rep_Cin" ColumnName="rep_Cin" />
+                <ScalarProperty Name="rep_Tele" ColumnName="rep_Tele" />
+                <ScalarProperty Name="rep_Observation" ColumnName="rep_Observation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Bon_Entree" FunctionName="GestionModel.Store.Update_Bon_Entree" />
+          <FunctionImportMapping FunctionImportName="Update_Fournisseur" FunctionName="GestionModel.Store.Update_Fournisseur" />
+          <FunctionImportMapping FunctionImportName="Update_Representant" FunctionName="GestionModel.Store.Update_Representant" />
+          <FunctionImportMapping FunctionImportName="Show_Bon_Entree_By_ID" FunctionName="GestionModel.Store.Show_Bon_Entree_By_ID" />
+          <FunctionImportMapping FunctionImportName="Show_Bon_Entree_Article_By_ID" FunctionName="GestionModel.Store.Show_Bon_Entree_Article_By_ID" />
+          <FunctionImportMapping FunctionImportName="MaxID_Bon_Entree_Article" FunctionName="GestionModel.Store.MaxID_Bon_Entree_Article" />
+          <FunctionImportMapping FunctionImportName="Delete_Bon_Entree_Article" FunctionName="GestionModel.Store.Delete_Bon_Entree_Article" />
+          <FunctionImportMapping FunctionImportName="Insert_Bon_Entree_Article" FunctionName="GestionModel.Store.Insert_Bon_Entree_Article" />
+          <FunctionImportMapping FunctionImportName="Update_Bon_Entree_Article" FunctionName="GestionModel.Store.Update_Bon_Entree_Article" />
+          <EntitySetMapping Name="Bon_Entree_Article">
+            <EntityTypeMapping TypeName="GestionModel.Bon_Entree_Article">
+              <MappingFragment StoreEntitySet="Bon_Entree_Article">
+                <ScalarProperty Name="be_A_Historique" ColumnName="be_A_Historique" />
+                <ScalarProperty Name="be_A_Description" ColumnName="be_A_Description" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_Qte_Livree" ColumnName="be_Qte_Livree" />
+                <ScalarProperty Name="be_A_Date" ColumnName="be_A_Date" />
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Insert_Operation" FunctionName="GestionModel.Store.Insert_Operation" />
+          <FunctionImportMapping FunctionImportName="Update_Operation" FunctionName="GestionModel.Store.Update_Operation" />
+          <EntitySetMapping Name="Operation">
+            <EntityTypeMapping TypeName="GestionModel.Operation">
+              <MappingFragment StoreEntitySet="Operation">
+                <ScalarProperty Name="br_A_ID" ColumnName="br_A_ID" />
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+                <ScalarProperty Name="bon_ID" ColumnName="bon_ID" />
+                <ScalarProperty Name="opera_Qte" ColumnName="opera_Qte" />
+                <ScalarProperty Name="opera_Type" ColumnName="opera_Type" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="opera_Date" ColumnName="opera_Date" />
+                <ScalarProperty Name="opera_ID" ColumnName="opera_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Entree" FunctionName="GestionModel.Store.Historique_Bon_Entree" />
+          <FunctionImportMapping FunctionImportName="Delete_Bon_Sortie" FunctionName="GestionModel.Store.Delete_Bon_Sortie" />
+          <FunctionImportMapping FunctionImportName="Insert_Bon_Sortie" FunctionName="GestionModel.Store.Insert_Bon_Sortie" />
+          <FunctionImportMapping FunctionImportName="Insert_Bon_Sortie_Article" FunctionName="GestionModel.Store.Insert_Bon_Sortie_Article" />
+          <FunctionImportMapping FunctionImportName="MaxID_Bon_Sortie" FunctionName="GestionModel.Store.MaxID_Bon_Sortie" />
+          <FunctionImportMapping FunctionImportName="MaxID_Bon_Sortie_Article" FunctionName="GestionModel.Store.MaxID_Bon_Sortie_Article" />
+          <FunctionImportMapping FunctionImportName="Select_Bon_Sortie" FunctionName="GestionModel.Store.Select_Bon_Sortie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Bon_Sortie_Result">
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_Date" ColumnName="bs_Date" />
+                <ScalarProperty Name="bs_Designation" ColumnName="bs_Designation" />
+                <ScalarProperty Name="bs_Reference" ColumnName="bs_Reference" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="bs_Description" ColumnName="bs_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Bon_Sortie_Article" FunctionName="GestionModel.Store.Select_Bon_Sortie_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Bon_Sortie_Article_Result">
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+                <ScalarProperty Name="bs_A_Date" ColumnName="bs_A_Date" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="bs_Qte_Livree" ColumnName="bs_Qte_Livree" />
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_A_Description" ColumnName="bs_A_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Bon_Sortie" FunctionName="GestionModel.Store.Update_Bon_Sortie" />
+          <FunctionImportMapping FunctionImportName="Update_Bon_Sortie_Article" FunctionName="GestionModel.Store.Update_Bon_Sortie_Article" />
+          <EntitySetMapping Name="Bon_Sortie">
+            <EntityTypeMapping TypeName="GestionModel.Bon_Sortie">
+              <MappingFragment StoreEntitySet="Bon_Sortie">
+                <ScalarProperty Name="bs_Historique" ColumnName="bs_Historique" />
+                <ScalarProperty Name="bs_Description" ColumnName="bs_Description" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="bs_Reference" ColumnName="bs_Reference" />
+                <ScalarProperty Name="bs_Designation" ColumnName="bs_Designation" />
+                <ScalarProperty Name="bs_Date" ColumnName="bs_Date" />
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bon_Sortie_Article">
+            <EntityTypeMapping TypeName="GestionModel.Bon_Sortie_Article">
+              <MappingFragment StoreEntitySet="Bon_Sortie_Article">
+                <ScalarProperty Name="bs_A_Historique" ColumnName="bs_A_Historique" />
+                <ScalarProperty Name="bs_A_Description" ColumnName="bs_A_Description" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_Qte_Livree" ColumnName="bs_Qte_Livree" />
+                <ScalarProperty Name="bs_A_Date" ColumnName="bs_A_Date" />
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unite_Soutien">
+            <EntityTypeMapping TypeName="GestionModel.Unite_Soutien">
+              <MappingFragment StoreEntitySet="Unite_Soutien">
+                <ScalarProperty Name="vil_ID" ColumnName="vil_ID" />
+                <ScalarProperty Name="unt_status" ColumnName="unt_status" />
+                <ScalarProperty Name="unt_Description" ColumnName="unt_Description" />
+                <ScalarProperty Name="unt_Unite" ColumnName="unt_Unite" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Show_Bon_Sortie_Article_By_ID" FunctionName="GestionModel.Store.Show_Bon_Sortie_Article_By_ID" />
+          <FunctionImportMapping FunctionImportName="Show_Bon_Sortie_By_ID" FunctionName="GestionModel.Store.Show_Bon_Sortie_By_ID" />
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Entree_Article_H" FunctionName="GestionModel.Store.Historique_Bon_Entree_Article_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Historique_Bon_Entree_Article_H_Result">
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+                <ScalarProperty Name="be_A_Date" ColumnName="be_A_Date" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="be_Qte_Livree" ColumnName="be_Qte_Livree" />
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_A_Description" ColumnName="be_A_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Entree_H" FunctionName="GestionModel.Store.Historique_Bon_Entree_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Historique_Bon_Entree_H_Result">
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_Date" ColumnName="be_Date" />
+                <ScalarProperty Name="be_Designation" ColumnName="be_Designation" />
+                <ScalarProperty Name="be_Reference" ColumnName="be_Reference" />
+                <ScalarProperty Name="be_PV" ColumnName="be_PV" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+                <ScalarProperty Name="be_Description" ColumnName="be_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Sortie_Article_H" FunctionName="GestionModel.Store.Historique_Bon_Sortie_Article_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Historique_Bon_Sortie_Article_H_Result">
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+                <ScalarProperty Name="bs_A_Date" ColumnName="bs_A_Date" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="bs_Qte_Livree" ColumnName="bs_Qte_Livree" />
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_A_Description" ColumnName="bs_A_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Sortie_H" FunctionName="GestionModel.Store.Historique_Bon_Sortie_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Historique_Bon_Sortie_H_Result">
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_Date" ColumnName="bs_Date" />
+                <ScalarProperty Name="bs_Designation" ColumnName="bs_Designation" />
+                <ScalarProperty Name="bs_Reference" ColumnName="bs_Reference" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="bs_Description" ColumnName="bs_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Sortie" FunctionName="GestionModel.Store.Historique_Bon_Sortie" />
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Sortie_Article" FunctionName="GestionModel.Store.Historique_Bon_Sortie_Article" />
+          <FunctionImportMapping FunctionImportName="Delete_Bon_Sortie_Article" FunctionName="GestionModel.Store.Delete_Bon_Sortie_Article" />
+          <FunctionImportMapping FunctionImportName="Select_Unite_Soutien" FunctionName="GestionModel.Store.Select_Unite_Soutien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Unite_Soutien_Result">
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="unt_Unite" ColumnName="unt_Unite" />
+                <ScalarProperty Name="unt_Description" ColumnName="unt_Description" />
+                <ScalarProperty Name="unt_status" ColumnName="unt_status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ResteQteArticle" FunctionName="GestionModel.Store.ResteQteArticle" />
+          <FunctionImportMapping FunctionImportName="Delete_Bon_Retour" FunctionName="GestionModel.Store.Delete_Bon_Retour" />
+          <FunctionImportMapping FunctionImportName="Delete_Bon_Retour_Article" FunctionName="GestionModel.Store.Delete_Bon_Retour_Article" />
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Retour" FunctionName="GestionModel.Store.Historique_Bon_Retour" />
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Retour_Article" FunctionName="GestionModel.Store.Historique_Bon_Retour_Article" />
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Retour_Article_H" FunctionName="GestionModel.Store.Historique_Bon_Retour_Article_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Historique_Bon_Retour_Article_H_Result">
+                <ScalarProperty Name="br_A_ID" ColumnName="br_A_ID" />
+                <ScalarProperty Name="br_A_Date" ColumnName="br_A_Date" />
+                <ScalarProperty Name="br_Qte_Livree" ColumnName="br_Qte_Livree" />
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="br_A_Description" ColumnName="br_A_Description" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Retour_H" FunctionName="GestionModel.Store.Historique_Bon_Retour_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Historique_Bon_Retour_H_Result">
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+                <ScalarProperty Name="br_Date" ColumnName="br_Date" />
+                <ScalarProperty Name="br_Designation" ColumnName="br_Designation" />
+                <ScalarProperty Name="br_Reference" ColumnName="br_Reference" />
+                <ScalarProperty Name="br_PV" ColumnName="br_PV" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="br_Description" ColumnName="br_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Insert_Bon_Retour" FunctionName="GestionModel.Store.Insert_Bon_Retour" />
+          <FunctionImportMapping FunctionImportName="MaxID_Bon_Retour" FunctionName="GestionModel.Store.MaxID_Bon_Retour" />
+          <FunctionImportMapping FunctionImportName="MaxID_Bon_Retour_Article" FunctionName="GestionModel.Store.MaxID_Bon_Retour_Article" />
+          <FunctionImportMapping FunctionImportName="Select_Bon_Retour" FunctionName="GestionModel.Store.Select_Bon_Retour">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Bon_Retour_Result">
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+                <ScalarProperty Name="br_Date" ColumnName="br_Date" />
+                <ScalarProperty Name="br_Designation" ColumnName="br_Designation" />
+                <ScalarProperty Name="br_Reference" ColumnName="br_Reference" />
+                <ScalarProperty Name="br_PV" ColumnName="br_PV" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="br_Description" ColumnName="br_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Bon_Retour_Article" FunctionName="GestionModel.Store.Select_Bon_Retour_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Bon_Retour_Article_Result">
+                <ScalarProperty Name="br_A_ID" ColumnName="br_A_ID" />
+                <ScalarProperty Name="br_A_Date" ColumnName="br_A_Date" />
+                <ScalarProperty Name="br_Qte_Livree" ColumnName="br_Qte_Livree" />
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="br_A_Description" ColumnName="br_A_Description" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Bon_Retour" FunctionName="GestionModel.Store.Update_Bon_Retour" />
+          <FunctionImportMapping FunctionImportName="Update_Bon_Retour_Article" FunctionName="GestionModel.Store.Update_Bon_Retour_Article" />
+          <EntitySetMapping Name="Bon_Retour">
+            <EntityTypeMapping TypeName="GestionModel.Bon_Retour">
+              <MappingFragment StoreEntitySet="Bon_Retour">
+                <ScalarProperty Name="br_Historique" ColumnName="br_Historique" />
+                <ScalarProperty Name="br_Description" ColumnName="br_Description" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="br_PV" ColumnName="br_PV" />
+                <ScalarProperty Name="br_Reference" ColumnName="br_Reference" />
+                <ScalarProperty Name="br_Designation" ColumnName="br_Designation" />
+                <ScalarProperty Name="br_Date" ColumnName="br_Date" />
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bon_Retour_Article">
+            <EntityTypeMapping TypeName="GestionModel.Bon_Retour_Article">
+              <MappingFragment StoreEntitySet="Bon_Retour_Article">
+                <ScalarProperty Name="br_A_Historique" ColumnName="br_A_Historique" />
+                <ScalarProperty Name="br_A_Description" ColumnName="br_A_Description" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+                <ScalarProperty Name="br_Qte_Livree" ColumnName="br_Qte_Livree" />
+                <ScalarProperty Name="br_A_Date" ColumnName="br_A_Date" />
+                <ScalarProperty Name="br_A_ID" ColumnName="br_A_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Show_Bon_Retour_Article_By_ID" FunctionName="GestionModel.Store.Show_Bon_Retour_Article_By_ID" />
+          <FunctionImportMapping FunctionImportName="Show_Bon_Retour_By_ID" FunctionName="GestionModel.Store.Show_Bon_Retour_By_ID" />
+          <FunctionImportMapping FunctionImportName="Insert_Bon_Retour_Article" FunctionName="GestionModel.Store.Insert_Bon_Retour_Article" />
+          <FunctionImportMapping FunctionImportName="Select_Operation_By_Operation" FunctionName="GestionModel.Store.Select_Operation_By_Operation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Operation_By_Operation_Result">
+                <ScalarProperty Name="opera_ID" ColumnName="opera_ID" />
+                <ScalarProperty Name="bon_ID" ColumnName="bon_ID" />
+                <ScalarProperty Name="opera_Date" ColumnName="opera_Date" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="opera_Qte" ColumnName="opera_Qte" />
+                <ScalarProperty Name="be_Designation" ColumnName="be_Designation" />
+                <ScalarProperty Name="be_Reference" ColumnName="be_Reference" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="GestionModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="GestionModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="GestionModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="GestionModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="GestionModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="GestionModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="GestionModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="Count_Fournisseur" FunctionName="GestionModel.Store.Count_Fournisseur" />
+          <FunctionImportMapping FunctionImportName="Search_Fournisseur" FunctionName="GestionModel.Store.Search_Fournisseur" />
+          <FunctionImportMapping FunctionImportName="Search_Representant" FunctionName="GestionModel.Store.Search_Representant">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Representant_Result">
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+                <ScalarProperty Name="frns_Nom" ColumnName="frns_Nom" />
+                <ScalarProperty Name="rep_Nom" ColumnName="rep_Nom" />
+                <ScalarProperty Name="rep_Prenom" ColumnName="rep_Prenom" />
+                <ScalarProperty Name="rep_Cin" ColumnName="rep_Cin" />
+                <ScalarProperty Name="rep_Tele" ColumnName="rep_Tele" />
+                <ScalarProperty Name="rep_Observation" ColumnName="rep_Observation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Show_Fournisseur_By_ID" FunctionName="GestionModel.Store.Show_Fournisseur_By_ID" />
+          <FunctionImportMapping FunctionImportName="Show_Representant_By_ID" FunctionName="GestionModel.Store.Show_Representant_By_ID" />
+          <EntitySetMapping Name="Ville">
+            <EntityTypeMapping TypeName="GestionModel.Ville">
+              <MappingFragment StoreEntitySet="Ville">
+                <ScalarProperty Name="vil_Status" ColumnName="vil_Status" />
+                <ScalarProperty Name="vil_Description" ColumnName="vil_Description" />
+                <ScalarProperty Name="vil_Nom" ColumnName="vil_Nom" />
+                <ScalarProperty Name="vil_ID" ColumnName="vil_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Delete_Ville" FunctionName="GestionModel.Store.Delete_Ville" />
+          <FunctionImportMapping FunctionImportName="Insert_Ville" FunctionName="GestionModel.Store.Insert_Ville" />
+          <FunctionImportMapping FunctionImportName="MaxID_Ville" FunctionName="GestionModel.Store.MaxID_Ville" />
+          <FunctionImportMapping FunctionImportName="Search_Ville" FunctionName="GestionModel.Store.Search_Ville">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Ville_Result">
+                <ScalarProperty Name="vil_ID" ColumnName="vil_ID" />
+                <ScalarProperty Name="vil_Nom" ColumnName="vil_Nom" />
+                <ScalarProperty Name="vil_Description" ColumnName="vil_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Ville" FunctionName="GestionModel.Store.Select_Ville">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Select_Ville_Result">
+                <ScalarProperty Name="vil_ID" ColumnName="vil_ID" />
+                <ScalarProperty Name="vil_Nom" ColumnName="vil_Nom" />
+                <ScalarProperty Name="vil_Description" ColumnName="vil_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Ville" FunctionName="GestionModel.Store.Update_Ville" />
+          <FunctionImportMapping FunctionImportName="Show_Ville_By_ID" FunctionName="GestionModel.Store.Show_Ville_By_ID">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Count_Ville" FunctionName="GestionModel.Store.Count_Ville" />
+          <FunctionImportMapping FunctionImportName="Count_Unite_Soutien" FunctionName="GestionModel.Store.Count_Unite_Soutien" />
+          <FunctionImportMapping FunctionImportName="Delete_Unite_Soutien" FunctionName="GestionModel.Store.Delete_Unite_Soutien" />
+          <FunctionImportMapping FunctionImportName="Insert_Unite_Soutien" FunctionName="GestionModel.Store.Insert_Unite_Soutien" />
+          <FunctionImportMapping FunctionImportName="MaxID_Unite_Soutien" FunctionName="GestionModel.Store.MaxID_Unite_Soutien" />
+          <FunctionImportMapping FunctionImportName="Search_Unite_Soutien" FunctionName="GestionModel.Store.Search_Unite_Soutien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Unite_Soutien_Result">
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="unt_Unite" ColumnName="unt_Unite" />
+                <ScalarProperty Name="vil_Nom" ColumnName="vil_Nom" />
+                <ScalarProperty Name="unt_Description" ColumnName="unt_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Unite_Soutien" FunctionName="GestionModel.Store.Update_Unite_Soutien" />
+          <FunctionImportMapping FunctionImportName="Show_Unite_Soutien_By_ID" FunctionName="GestionModel.Store.Show_Unite_Soutien_By_ID" />
+          <FunctionImportMapping FunctionImportName="Count_Pneu" FunctionName="GestionModel.Store.Count_Pneu" />
+          <FunctionImportMapping FunctionImportName="Search_Bon_Entree" FunctionName="GestionModel.Store.Search_Bon_Entree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Entree_Result">
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_Date" ColumnName="be_Date" />
+                <ScalarProperty Name="be_Designation" ColumnName="be_Designation" />
+                <ScalarProperty Name="be_Reference" ColumnName="be_Reference" />
+                <ScalarProperty Name="be_PV" ColumnName="be_PV" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+                <ScalarProperty Name="be_Description" ColumnName="be_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Count_Bon_Entree" FunctionName="GestionModel.Store.Count_Bon_Entree" />
+          <FunctionImportMapping FunctionImportName="Count_Bon_Entree_Article" FunctionName="GestionModel.Store.Count_Bon_Entree_Article" />
+          <FunctionImportMapping FunctionImportName="Search_Bon_Entree_Article" FunctionName="GestionModel.Store.Search_Bon_Entree_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Entree_Article_Result">
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+                <ScalarProperty Name="be_A_Date" ColumnName="be_A_Date" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="be_Qte_Livree" ColumnName="be_Qte_Livree" />
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_A_Description" ColumnName="be_A_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Entree_Article_H" FunctionName="GestionModel.Store.Search_Bon_Entree_Article_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Entree_Article_H_Result">
+                <ScalarProperty Name="be_A_ID" ColumnName="be_A_ID" />
+                <ScalarProperty Name="be_A_Date" ColumnName="be_A_Date" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="be_Qte_Livree" ColumnName="be_Qte_Livree" />
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_A_Description" ColumnName="be_A_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Entree_H" FunctionName="GestionModel.Store.Search_Bon_Entree_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Entree_H_Result">
+                <ScalarProperty Name="be_ID" ColumnName="be_ID" />
+                <ScalarProperty Name="be_Date" ColumnName="be_Date" />
+                <ScalarProperty Name="be_Designation" ColumnName="be_Designation" />
+                <ScalarProperty Name="be_Reference" ColumnName="be_Reference" />
+                <ScalarProperty Name="be_PV" ColumnName="be_PV" />
+                <ScalarProperty Name="frns_ID" ColumnName="frns_ID" />
+                <ScalarProperty Name="rep_ID" ColumnName="rep_ID" />
+                <ScalarProperty Name="be_Description" ColumnName="be_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Retour" FunctionName="GestionModel.Store.Search_Bon_Retour">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Retour_Result">
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+                <ScalarProperty Name="br_Date" ColumnName="br_Date" />
+                <ScalarProperty Name="br_Designation" ColumnName="br_Designation" />
+                <ScalarProperty Name="br_Reference" ColumnName="br_Reference" />
+                <ScalarProperty Name="br_PV" ColumnName="br_PV" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="br_Description" ColumnName="br_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Retour_Article" FunctionName="GestionModel.Store.Search_Bon_Retour_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Retour_Article_Result">
+                <ScalarProperty Name="br_A_ID" ColumnName="br_A_ID" />
+                <ScalarProperty Name="br_A_Date" ColumnName="br_A_Date" />
+                <ScalarProperty Name="br_Qte_Livree" ColumnName="br_Qte_Livree" />
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="br_A_Description" ColumnName="br_A_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Retour_Article_H" FunctionName="GestionModel.Store.Search_Bon_Retour_Article_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Retour_Article_H_Result">
+                <ScalarProperty Name="br_A_ID" ColumnName="br_A_ID" />
+                <ScalarProperty Name="br_A_Date" ColumnName="br_A_Date" />
+                <ScalarProperty Name="br_Qte_Livree" ColumnName="br_Qte_Livree" />
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="br_A_Description" ColumnName="br_A_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Retour_H" FunctionName="GestionModel.Store.Search_Bon_Retour_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Retour_H_Result">
+                <ScalarProperty Name="br_ID" ColumnName="br_ID" />
+                <ScalarProperty Name="br_Date" ColumnName="br_Date" />
+                <ScalarProperty Name="br_Designation" ColumnName="br_Designation" />
+                <ScalarProperty Name="br_Reference" ColumnName="br_Reference" />
+                <ScalarProperty Name="br_PV" ColumnName="br_PV" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="br_Description" ColumnName="br_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Sortie" FunctionName="GestionModel.Store.Search_Bon_Sortie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Sortie_Result">
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_Date" ColumnName="bs_Date" />
+                <ScalarProperty Name="bs_Designation" ColumnName="bs_Designation" />
+                <ScalarProperty Name="bs_Reference" ColumnName="bs_Reference" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="bs_Description" ColumnName="bs_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Sortie_Article" FunctionName="GestionModel.Store.Search_Bon_Sortie_Article">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Sortie_Article_Result">
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+                <ScalarProperty Name="bs_A_Date" ColumnName="bs_A_Date" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="bs_Qte_Livree" ColumnName="bs_Qte_Livree" />
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_A_Description" ColumnName="bs_A_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Sortie_Article_H" FunctionName="GestionModel.Store.Search_Bon_Sortie_Article_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Sortie_Article_H_Result">
+                <ScalarProperty Name="bs_A_ID" ColumnName="bs_A_ID" />
+                <ScalarProperty Name="bs_A_Date" ColumnName="bs_A_Date" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="bs_Qte_Livree" ColumnName="bs_Qte_Livree" />
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_A_Description" ColumnName="bs_A_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Search_Bon_Sortie_H" FunctionName="GestionModel.Store.Search_Bon_Sortie_H">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Search_Bon_Sortie_H_Result">
+                <ScalarProperty Name="bs_ID" ColumnName="bs_ID" />
+                <ScalarProperty Name="bs_Date" ColumnName="bs_Date" />
+                <ScalarProperty Name="bs_Designation" ColumnName="bs_Designation" />
+                <ScalarProperty Name="bs_Reference" ColumnName="bs_Reference" />
+                <ScalarProperty Name="unt_ID" ColumnName="unt_ID" />
+                <ScalarProperty Name="bs_Description" ColumnName="bs_Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Historique_Bon_Entree_Article" FunctionName="GestionModel.Store.Historique_Bon_Entree_Article" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

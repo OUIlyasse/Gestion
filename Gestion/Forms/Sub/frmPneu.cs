@@ -201,7 +201,7 @@ namespace Gestion.Forms.Sub
         {
             db = new GestionEntities();
             DataGridViewRow row = dgvPneu.Rows[e.RowIndex];
-            idPneu = int.Parse(row.Cells[colvil_ID.Name].Value.ToString());
+            idPneu = int.Parse(row.Cells[colpne_ID.Name].Value.ToString());
             Pneu ville = db.Show_Pneu_By_ID(idPneu).FirstOrDefault();
             setValue(ville);
             Verify_Buttons(false);

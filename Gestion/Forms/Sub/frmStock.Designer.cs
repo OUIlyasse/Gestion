@@ -33,14 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvStock = new System.Windows.Forms.DataGridView();
+            this.colpne_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colmvt_Qte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuDGV = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.entreesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sortiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.retoursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colpne_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colmvt_Qte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.journalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -104,6 +106,23 @@
             this.dgvStock.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvStock_CellContextMenuStripNeeded);
             this.dgvStock.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStock_CellMouseDown);
             // 
+            // colpne_Designation
+            // 
+            this.colpne_Designation.DataPropertyName = "pne_Designation";
+            this.colpne_Designation.FillWeight = 98.47716F;
+            this.colpne_Designation.HeaderText = "Pneu";
+            this.colpne_Designation.Name = "colpne_Designation";
+            this.colpne_Designation.ReadOnly = true;
+            // 
+            // colmvt_Qte
+            // 
+            this.colmvt_Qte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colmvt_Qte.DataPropertyName = "mvt_Qte";
+            this.colmvt_Qte.FillWeight = 101.5228F;
+            this.colmvt_Qte.HeaderText = "Reste";
+            this.colmvt_Qte.Name = "colmvt_Qte";
+            this.colmvt_Qte.ReadOnly = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.textBox1);
@@ -129,47 +148,44 @@
             this.menuDGV.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.entreesToolStripMenuItem,
             this.sortiesToolStripMenuItem,
-            this.retoursToolStripMenuItem});
+            this.retoursToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.journalToolStripMenuItem});
             this.menuDGV.Name = "menuDGV";
-            this.menuDGV.Size = new System.Drawing.Size(129, 76);
+            this.menuDGV.Size = new System.Drawing.Size(211, 134);
             // 
             // entreesToolStripMenuItem
             // 
             this.entreesToolStripMenuItem.Name = "entreesToolStripMenuItem";
-            this.entreesToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
+            this.entreesToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.entreesToolStripMenuItem.Text = "Entrees";
             this.entreesToolStripMenuItem.Click += new System.EventHandler(this.entreesToolStripMenuItem_Click);
             // 
             // sortiesToolStripMenuItem
             // 
             this.sortiesToolStripMenuItem.Name = "sortiesToolStripMenuItem";
-            this.sortiesToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
+            this.sortiesToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.sortiesToolStripMenuItem.Text = "Sorties";
             this.sortiesToolStripMenuItem.Click += new System.EventHandler(this.sortiesToolStripMenuItem_Click);
             // 
             // retoursToolStripMenuItem
             // 
             this.retoursToolStripMenuItem.Name = "retoursToolStripMenuItem";
-            this.retoursToolStripMenuItem.Size = new System.Drawing.Size(128, 24);
+            this.retoursToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.retoursToolStripMenuItem.Text = "Retours";
             this.retoursToolStripMenuItem.Click += new System.EventHandler(this.retoursToolStripMenuItem_Click);
             // 
-            // colpne_Designation
+            // toolStripSeparator1
             // 
-            this.colpne_Designation.DataPropertyName = "pne_Designation";
-            this.colpne_Designation.FillWeight = 98.47716F;
-            this.colpne_Designation.HeaderText = "Pneu";
-            this.colpne_Designation.Name = "colpne_Designation";
-            this.colpne_Designation.ReadOnly = true;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
             // 
-            // colmvt_Qte
+            // journalToolStripMenuItem
             // 
-            this.colmvt_Qte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colmvt_Qte.DataPropertyName = "mvt_Qte";
-            this.colmvt_Qte.FillWeight = 101.5228F;
-            this.colmvt_Qte.HeaderText = "Reste";
-            this.colmvt_Qte.Name = "colmvt_Qte";
-            this.colmvt_Qte.ReadOnly = true;
+            this.journalToolStripMenuItem.Name = "journalToolStripMenuItem";
+            this.journalToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.journalToolStripMenuItem.Text = "Journal";
+            this.journalToolStripMenuItem.Click += new System.EventHandler(this.journalToolStripMenuItem_Click);
             // 
             // frmStock
             // 
@@ -206,5 +222,7 @@
         private System.Windows.Forms.ToolStripMenuItem retoursToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn colpne_Designation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colmvt_Qte;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem journalToolStripMenuItem;
     }
 }

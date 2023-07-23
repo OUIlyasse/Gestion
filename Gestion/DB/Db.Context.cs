@@ -1695,5 +1695,23 @@ namespace Gestion.DB
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Historique_Bon_Entree_Article", be_A_IDParameter);
         }
+    
+        public virtual ObjectResult<Journal_All_Operation_Result> Journal_All_Operation(string pne_Designation)
+        {
+            var pne_DesignationParameter = pne_Designation != null ?
+                new ObjectParameter("pne_Designation", pne_Designation) :
+                new ObjectParameter("pne_Designation", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Journal_All_Operation_Result>("Journal_All_Operation", pne_DesignationParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Select_Pneu_By_Designation(string pne_Designation)
+        {
+            var pne_DesignationParameter = pne_Designation != null ?
+                new ObjectParameter("pne_Designation", pne_Designation) :
+                new ObjectParameter("pne_Designation", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Select_Pneu_By_Designation", pne_DesignationParameter);
+        }
     }
 }

@@ -116,7 +116,9 @@ namespace Gestion.Forms.Sub
                 return;
             }
             btnBackup.Enabled = false;
-            backgroundWorkerBackup.RunWorkerAsync();
+            Backup();
+            btnBackup.Enabled = true;
+            iMessage.sucMsg("Success", "Votre sauvegarde est créée correctement");
         }
 
         private void btnRestore_Click(object sender, EventArgs e)
@@ -128,39 +130,7 @@ namespace Gestion.Forms.Sub
                 return;
             }
             btnRestore.Enabled = false;
-            backgroundWorkerRestore.RunWorkerAsync();
-        }
-
-        private void backgroundWorkerBackup_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Backup();
-        }
-
-        private void backgroundWorkerBackup_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            pbBStatus.Value = e.ProgressPercentage;
-            lblBStatus.Text = $"{e.ProgressPercentage}%";
-        }
-
-        private void backgroundWorkerBackup_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            btnBackup.Enabled = true;
-            iMessage.sucMsg("Success", "Votre sauvegarde est créée correctement");
-        }
-
-        private void backgroundWorkerRestore_DoWork(object sender, DoWorkEventArgs e)
-        {
             Restore();
-        }
-
-        private void backgroundWorkerRestore_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            pbRStatus.Value = e.ProgressPercentage;
-            lblRStatus.Text = $"{e.ProgressPercentage}%";
-        }
-
-        private void backgroundWorkerRestore_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
             btnRestore.Enabled = true;
             iMessage.sucMsg("Success", "Votre restauration s'effectue correctement");
         }

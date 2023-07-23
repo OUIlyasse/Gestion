@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuDGV = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnColonne = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -38,19 +38,21 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblCount = new System.Windows.Forms.Label();
             this.dgvPneu = new System.Windows.Forms.DataGridView();
-            this.colvil_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colvil_Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colvil_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtProduction = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtMarque = new System.Windows.Forms.TextBox();
             this.txtObservation = new System.Windows.Forms.RichTextBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtReference = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtMarque = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtProduction = new System.Windows.Forms.DateTimePicker();
+            this.colpne_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colpne_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colpne_Marque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colpne_Date_Production = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colpne_Observation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuDGV.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPneu)).BeginInit();
@@ -131,60 +133,39 @@
             this.dgvPneu.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvPneu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPneu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colvil_ID,
-            this.colvil_Nom,
-            this.colvil_Description});
+            this.colpne_ID,
+            this.colpne_Designation,
+            this.colpne_Marque,
+            this.colpne_Date_Production,
+            this.colpne_Observation});
             this.dgvPneu.ContextMenuStrip = this.menuDGV;
             this.dgvPneu.GridColor = System.Drawing.SystemColors.Control;
             this.dgvPneu.Location = new System.Drawing.Point(6, 61);
             this.dgvPneu.MultiSelect = false;
             this.dgvPneu.Name = "dgvPneu";
             this.dgvPneu.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 10.2F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPneu.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPneu.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPneu.RowHeadersVisible = false;
             this.dgvPneu.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvPneu.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvPneu.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPneu.RowTemplate.Height = 24;
             this.dgvPneu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPneu.Size = new System.Drawing.Size(496, 412);
             this.dgvPneu.TabIndex = 1;
             this.dgvPneu.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvVille_CellContextMenuStripNeeded);
             this.dgvPneu.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVille_CellDoubleClick);
-            // 
-            // colvil_ID
-            // 
-            this.colvil_ID.DataPropertyName = "vil_ID";
-            this.colvil_ID.HeaderText = "Code ville";
-            this.colvil_ID.Name = "colvil_ID";
-            this.colvil_ID.ReadOnly = true;
-            this.colvil_ID.Visible = false;
-            // 
-            // colvil_Nom
-            // 
-            this.colvil_Nom.DataPropertyName = "vil_Nom";
-            this.colvil_Nom.HeaderText = "Ville";
-            this.colvil_Nom.Name = "colvil_Nom";
-            this.colvil_Nom.ReadOnly = true;
-            // 
-            // colvil_Description
-            // 
-            this.colvil_Description.DataPropertyName = "vil_Description";
-            this.colvil_Description.HeaderText = "Description";
-            this.colvil_Description.Name = "colvil_Description";
-            this.colvil_Description.ReadOnly = true;
-            this.colvil_Description.Visible = false;
             // 
             // groupBox2
             // 
@@ -205,6 +186,44 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Information";
+            // 
+            // dtProduction
+            // 
+            this.dtProduction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtProduction.Location = new System.Drawing.Point(270, 140);
+            this.dtProduction.Name = "dtProduction";
+            this.dtProduction.Size = new System.Drawing.Size(167, 28);
+            this.dtProduction.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(270, 117);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(146, 20);
+            this.label5.TabIndex = 22;
+            this.label5.Tag = "";
+            this.label5.Text = "Date production";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(17, 117);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.TabIndex = 21;
+            this.label2.Tag = "";
+            this.label2.Text = "Marque";
+            // 
+            // txtMarque
+            // 
+            this.txtMarque.Location = new System.Drawing.Point(17, 140);
+            this.txtMarque.Name = "txtMarque";
+            this.txtMarque.Size = new System.Drawing.Size(235, 28);
+            this.txtMarque.TabIndex = 20;
+            this.txtMarque.Validating += new System.ComponentModel.CancelEventHandler(this.txtMarque_Validating);
             // 
             // txtObservation
             // 
@@ -258,43 +277,42 @@
             this.txtReference.TabIndex = 0;
             this.txtReference.Validating += new System.ComponentModel.CancelEventHandler(this.txtVille_Validating);
             // 
-            // label2
+            // colpne_ID
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 117);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 21;
-            this.label2.Tag = "";
-            this.label2.Text = "Marque";
+            this.colpne_ID.DataPropertyName = "pne_ID";
+            this.colpne_ID.HeaderText = "code pneu";
+            this.colpne_ID.Name = "colpne_ID";
+            this.colpne_ID.ReadOnly = true;
+            this.colpne_ID.Visible = false;
             // 
-            // txtMarque
+            // colpne_Designation
             // 
-            this.txtMarque.Location = new System.Drawing.Point(17, 140);
-            this.txtMarque.Name = "txtMarque";
-            this.txtMarque.Size = new System.Drawing.Size(235, 28);
-            this.txtMarque.TabIndex = 20;
-            this.txtMarque.Validating += new System.ComponentModel.CancelEventHandler(this.txtMarque_Validating);
+            this.colpne_Designation.DataPropertyName = "pne_Designation";
+            this.colpne_Designation.HeaderText = "Pneu";
+            this.colpne_Designation.Name = "colpne_Designation";
+            this.colpne_Designation.ReadOnly = true;
             // 
-            // label5
+            // colpne_Marque
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(270, 117);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(146, 20);
-            this.label5.TabIndex = 22;
-            this.label5.Tag = "";
-            this.label5.Text = "Date production";
+            this.colpne_Marque.DataPropertyName = "pne_Marque";
+            this.colpne_Marque.HeaderText = "Marque";
+            this.colpne_Marque.Name = "colpne_Marque";
+            this.colpne_Marque.ReadOnly = true;
             // 
-            // dtProduction
+            // colpne_Date_Production
             // 
-            this.dtProduction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtProduction.Location = new System.Drawing.Point(270, 140);
-            this.dtProduction.Name = "dtProduction";
-            this.dtProduction.Size = new System.Drawing.Size(167, 28);
-            this.dtProduction.TabIndex = 7;
+            this.colpne_Date_Production.DataPropertyName = "pne_Date_Production";
+            this.colpne_Date_Production.HeaderText = "Date production";
+            this.colpne_Date_Production.Name = "colpne_Date_Production";
+            this.colpne_Date_Production.ReadOnly = true;
+            // 
+            // colpne_Observation
+            // 
+            this.colpne_Observation.DataPropertyName = "pne_Observation";
+            this.colpne_Observation.HeaderText = "Observation";
+            this.colpne_Observation.Name = "colpne_Observation";
+            this.colpne_Observation.ReadOnly = true;
+            this.colpne_Observation.Visible = false;
             // 
             // frmPneu
             // 
@@ -303,7 +321,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmPneu";
-            this.Text = "Villes";
+            this.Text = "Pneux";
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.menuDGV.ResumeLayout(false);
@@ -330,13 +348,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtReference;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colvil_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colvil_Nom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colvil_Description;
         private System.Windows.Forms.RichTextBox txtObservation;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMarque;
         private System.Windows.Forms.DateTimePicker dtProduction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colpne_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colpne_Designation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colpne_Marque;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colpne_Date_Production;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colpne_Observation;
     }
 }

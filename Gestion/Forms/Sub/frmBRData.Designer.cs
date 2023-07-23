@@ -42,8 +42,6 @@
             this.txtRPath = new System.Windows.Forms.TextBox();
             this.btnRBrowse = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.backgroundWorkerBackup = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorkerRestore = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -199,18 +197,6 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Emplacement";
             // 
-            // backgroundWorkerBackup
-            // 
-            this.backgroundWorkerBackup.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerBackup_DoWork);
-            this.backgroundWorkerBackup.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerBackup_ProgressChanged);
-            this.backgroundWorkerBackup.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerBackup_RunWorkerCompleted);
-            // 
-            // backgroundWorkerRestore
-            // 
-            this.backgroundWorkerRestore.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerRestore_DoWork);
-            this.backgroundWorkerRestore.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerRestore_ProgressChanged);
-            this.backgroundWorkerRestore.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerRestore_RunWorkerCompleted);
-            // 
             // frmBRData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -244,7 +230,6 @@
         private System.Windows.Forms.TextBox txtBPath;
         private System.Windows.Forms.Button btnBBrowse;
         private System.Windows.Forms.Label label1;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerBackup;
         private System.Windows.Forms.Label lblBStatus;
         private System.Windows.Forms.Label lblRStatus;
         private System.Windows.Forms.Button btnRestore;
@@ -252,6 +237,5 @@
         private System.Windows.Forms.TextBox txtRPath;
         private System.Windows.Forms.Button btnRBrowse;
         private System.Windows.Forms.Label label4;
-        private System.ComponentModel.BackgroundWorker backgroundWorkerRestore;
     }
 }

@@ -5,8 +5,11 @@
     <Setting Name="BPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="conStringMaster" Type="System.String" Scope="Application">
+    <Setting Name="conStringMaster" Type="System.String" Scope="User">
       <Value Profile="(Default)">Server = ILYASSE-PC\ILYASSE; Database = master; Integrated Security = True;</Value>
+    </Setting>
+    <Setting Name="conString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server = ILYASSE-PC\ILYASSE; Database = Gestion; Integrated Security = True;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

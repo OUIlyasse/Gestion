@@ -35,12 +35,27 @@ namespace Gestion.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Server = ILYASSE-PC\\ILYASSE; Database = master; Integrated Security = True;")]
         public string conStringMaster {
             get {
                 return ((string)(this["conStringMaster"]));
+            }
+            set {
+                this["conStringMaster"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server = ILYASSE-PC\\ILYASSE; Database = Gestion; Integrated Security = True;")]
+        public string conString {
+            get {
+                return ((string)(this["conString"]));
+            }
+            set {
+                this["conString"] = value;
             }
         }
     }

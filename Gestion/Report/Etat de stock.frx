@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/20/2023 22:32:45" ReportInfo.Modified="07/20/2023 23:15:58" ReportInfo.CreatorVersion="2021.2.8.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlq1f6x54XO4m6TDcZP3lKPLGB1FsvV9U/9Oc0SKljtAtUS76yu8007VaKgMTECPx4EKlHE5Ei6M2QAsJXH1NoMB22Yu5rjqFXdlJ4xolBR0VDrYcW1roNnE3oCdI2rAhwIGinqK+wyIMrbAJv1Ynj1gPdu+S7RzOr0KV0clNxWuVpusJNP9WyV+zQFXkM1T/G6aHltf0wTIolDit2e4acINw==">
+      <TableDataSource Name="Table" Alias="SommeQte" DataType="System.Int32" Enabled="true" SelectCommand="EXEC [dbo].[SommeQte]">
+        <Column Name="pne_Designation" DataType="System.String"/>
+        <Column Name="mvt_Qte" DataType="System.Int32"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="66.15">
+      <TextObject Name="Text5" Top="9.45" Width="718.2" Height="56.7" Text="Etat de stock" HorzAlign="Center" VertAlign="Center" Font="Roboto, 16pt, style=Bold, Underline"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="69.35" Width="718.2" Height="37.8">
+      <TextObject Name="Text2" Width="491.4" Height="37.8" Border.Lines="All" Fill.Color="PeachPuff" Text="Designation" VertAlign="Center" Font="Roboto, 11pt, style=Bold"/>
+      <TextObject Name="Text4" Left="491.4" Width="198.45" Height="37.8" Border.Lines="All" Fill.Color="PeachPuff" Text="Quantite restée" HorzAlign="Center" VertAlign="Center" Font="Roboto, 11pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="110.35" Width="718.2" Height="28.35" DataSource="Table">
+      <TextObject Name="Text1" Width="491.4" Height="28.35" Border.Lines="All" Text="[SommeQte.pne_Designation]" VertAlign="Center" Font="Roboto, 11pt"/>
+      <TextObject Name="Text3" Left="491.4" Width="198.45" Height="28.35" Border.Lines="All" Text="[SommeQte.mvt_Qte]" HorzAlign="Center" VertAlign="Center" Font="Roboto, 11pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="141.9" Width="718.2" Height="18.9">
+      <TextObject Name="Text7" Left="585.9" Width="132.3" Height="18.9" Text="[Page#] / [TotalPages#]" HorzAlign="Right" VertAlign="Center" Font="Roboto, 10.2pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

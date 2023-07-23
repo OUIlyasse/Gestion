@@ -1,4 +1,5 @@
-﻿using Gestion.Forms.Sub;
+﻿using Gestion.Forms.Print;
+using Gestion.Forms.Sub;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,6 +134,24 @@ namespace Gestion.Forms.Main
         private void restaurationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmBRData frm = new frmBRData(this);
+            frm.ShowDialog();
+        }
+
+        private void etatDeStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPrint_Etat_Stock frm = new frmPrint_Etat_Stock();
+            OpenForm(frm);
+        }
+
+        private void hisoriqueDarticleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPrint_Historique_Article frm = new frmPrint_Historique_Article();
+            OpenForm(frm);
+        }
+
+        private void serveurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmServeur frm = new frmServeur();
             frm.ShowDialog();
         }
     }

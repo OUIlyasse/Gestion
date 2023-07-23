@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,14 +50,21 @@
             this.fournisseurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.villeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uniteDeSoutienToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rapportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.etatDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hisoriqueDarticleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseDeDonneesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serveurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sauvegardeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilisateursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -68,6 +76,7 @@
             this.sortiesToolStripMenuItem1,
             this.retoursToolStripMenuItem,
             this.utilitaireToolStripMenuItem,
+            this.rapportToolStripMenuItem,
             this.baseDeDonneesToolStripMenuItem,
             this.permissionToolStripMenuItem,
             this.helpToolStripMenuItem});
@@ -233,26 +242,57 @@
             this.uniteDeSoutienToolStripMenuItem.Text = "Unite de soutien";
             this.uniteDeSoutienToolStripMenuItem.Click += new System.EventHandler(this.uniteDeSoutienToolStripMenuItem_Click);
             // 
+            // rapportToolStripMenuItem
+            // 
+            this.rapportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.etatDeStockToolStripMenuItem,
+            this.hisoriqueDarticleToolStripMenuItem});
+            this.rapportToolStripMenuItem.Name = "rapportToolStripMenuItem";
+            this.rapportToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
+            this.rapportToolStripMenuItem.Text = "Rapport";
+            // 
+            // etatDeStockToolStripMenuItem
+            // 
+            this.etatDeStockToolStripMenuItem.Name = "etatDeStockToolStripMenuItem";
+            this.etatDeStockToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
+            this.etatDeStockToolStripMenuItem.Text = "Etat de stock";
+            this.etatDeStockToolStripMenuItem.Click += new System.EventHandler(this.etatDeStockToolStripMenuItem_Click);
+            // 
+            // hisoriqueDarticleToolStripMenuItem
+            // 
+            this.hisoriqueDarticleToolStripMenuItem.Name = "hisoriqueDarticleToolStripMenuItem";
+            this.hisoriqueDarticleToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
+            this.hisoriqueDarticleToolStripMenuItem.Text = "Hisorique d\'article";
+            this.hisoriqueDarticleToolStripMenuItem.Click += new System.EventHandler(this.hisoriqueDarticleToolStripMenuItem_Click);
+            // 
             // baseDeDonneesToolStripMenuItem
             // 
             this.baseDeDonneesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serveurToolStripMenuItem,
             this.sauvegardeToolStripMenuItem,
             this.restaurationToolStripMenuItem});
             this.baseDeDonneesToolStripMenuItem.Name = "baseDeDonneesToolStripMenuItem";
             this.baseDeDonneesToolStripMenuItem.Size = new System.Drawing.Size(133, 24);
             this.baseDeDonneesToolStripMenuItem.Text = "Base de donnees";
             // 
+            // serveurToolStripMenuItem
+            // 
+            this.serveurToolStripMenuItem.Name = "serveurToolStripMenuItem";
+            this.serveurToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.serveurToolStripMenuItem.Text = "Connexion au Serveur";
+            this.serveurToolStripMenuItem.Click += new System.EventHandler(this.serveurToolStripMenuItem_Click);
+            // 
             // sauvegardeToolStripMenuItem
             // 
             this.sauvegardeToolStripMenuItem.Name = "sauvegardeToolStripMenuItem";
-            this.sauvegardeToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.sauvegardeToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.sauvegardeToolStripMenuItem.Text = "Sauvegarde";
             this.sauvegardeToolStripMenuItem.Click += new System.EventHandler(this.sauvegardeToolStripMenuItem_Click);
             // 
             // restaurationToolStripMenuItem
             // 
             this.restaurationToolStripMenuItem.Name = "restaurationToolStripMenuItem";
-            this.restaurationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.restaurationToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.restaurationToolStripMenuItem.Text = "Restauration";
             this.restaurationToolStripMenuItem.Click += new System.EventHandler(this.restaurationToolStripMenuItem_Click);
             // 
@@ -260,9 +300,10 @@
             // 
             this.permissionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.utilisateursToolStripMenuItem});
+            this.permissionToolStripMenuItem.Enabled = false;
             this.permissionToolStripMenuItem.Name = "permissionToolStripMenuItem";
-            this.permissionToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
-            this.permissionToolStripMenuItem.Text = "Permission";
+            this.permissionToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.permissionToolStripMenuItem.Text = "Parametres";
             // 
             // utilisateursToolStripMenuItem
             // 
@@ -274,6 +315,7 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Enabled = false;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.helpToolStripMenuItem.Text = "Help";
@@ -284,13 +326,33 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 630);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(982, 23);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(47, 18);
+            this.lblStatus.Text = "Etat...";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 653);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Roboto", 10.2F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
@@ -299,6 +361,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,5 +398,11 @@
         private System.Windows.Forms.ToolStripMenuItem uniteDeSoutienToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem permissionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem utilisateursToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rapportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem etatDeStockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hisoriqueDarticleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serveurToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        public System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }

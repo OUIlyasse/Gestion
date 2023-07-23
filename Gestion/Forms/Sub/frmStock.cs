@@ -106,5 +106,13 @@ namespace Gestion.Forms.Sub
         {
             rowSelected = e.RowIndex;
         }
+
+        private void journalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string pneu = $"{dgvStock.Rows[rowSelected].Cells[colpne_Designation.Name].Value}";
+            int idpneu = (int)db.Select_Pneu_By_Designation(dgvStock.Rows[rowSelected].Cells[colpne_Designation.Name].Value.ToString()).FirstOrDefault();
+            frmJournal frm = new frmJournal(pneu, idpneu);
+            frm.ShowDialog();
+        }
     }
 }

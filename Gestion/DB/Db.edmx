@@ -491,6 +491,9 @@
           <Parameter Name="vil_Nom" Type="nvarchar" Mode="In" />
           <Parameter Name="vil_Description" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="Journal_All_Operation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pne_Designation" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="MaxID_Bon_Entree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MaxID_Bon_Entree_Article" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MaxID_Bon_Retour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -579,6 +582,9 @@
           <Parameter Name="pne_Designation" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="Select_Pneu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Select_Pneu_By_Designation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pne_Designation" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="Select_Representant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="frns_ID" Type="int" Mode="In" />
         </Function>
@@ -1347,7 +1353,13 @@
           <Parameter Name="Search" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Historique_Bon_Entree_Article">
-            <Parameter Name="be_A_ID" Mode="In" Type="Int32" />
+          <Parameter Name="be_A_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Journal_All_Operation" ReturnType="Collection(GestionModel.Journal_All_Operation_Result)">
+          <Parameter Name="pne_Designation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Pneu_By_Designation" ReturnType="Collection(Int32)">
+          <Parameter Name="pne_Designation" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Select_Operation_By_Type_Result">
@@ -1986,6 +1998,17 @@
           <Property Type="String" Name="bs_Reference" Nullable="true" />
           <Property Type="Int32" Name="unt_ID" Nullable="true" />
           <Property Type="String" Name="bs_Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Journal_All_Operation_Result">
+          <Property Type="Int32" Name="opera_ID" Nullable="false" />
+          <Property Type="Int32" Name="bon_ID" Nullable="true" />
+          <Property Type="DateTime" Name="opera_Date" Nullable="true" />
+          <Property Type="String" Name="opera_Type" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="pne_Designation" Nullable="true" />
+          <Property Type="Int32" Name="opera_Qte" Nullable="true" />
+          <Property Type="String" Name="be_Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="be_Reference" Nullable="true" />
+          <Property Type="Int32" Name="pne_ID" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2660,6 +2683,22 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Historique_Bon_Entree_Article" FunctionName="GestionModel.Store.Historique_Bon_Entree_Article" />
+          <FunctionImportMapping FunctionImportName="Journal_All_Operation" FunctionName="GestionModel.Store.Journal_All_Operation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GestionModel.Journal_All_Operation_Result">
+                <ScalarProperty Name="opera_ID" ColumnName="opera_ID" />
+                <ScalarProperty Name="bon_ID" ColumnName="bon_ID" />
+                <ScalarProperty Name="opera_Date" ColumnName="opera_Date" />
+                <ScalarProperty Name="opera_Type" ColumnName="opera_Type" />
+                <ScalarProperty Name="pne_Designation" ColumnName="pne_Designation" />
+                <ScalarProperty Name="opera_Qte" ColumnName="opera_Qte" />
+                <ScalarProperty Name="be_Designation" ColumnName="be_Designation" />
+                <ScalarProperty Name="be_Reference" ColumnName="be_Reference" />
+                <ScalarProperty Name="pne_ID" ColumnName="pne_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Pneu_By_Designation" FunctionName="GestionModel.Store.Select_Pneu_By_Designation" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

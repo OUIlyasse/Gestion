@@ -32,10 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvOperation = new System.Windows.Forms.DataGridView();
-            this.lblPneu = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblType = new System.Windows.Forms.Label();
             this.colopera_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colbon_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colopera_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +39,10 @@
             this.colbe_Designation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colbe_Reference = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colopera_Qte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblPneu = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblType = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperation)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -107,43 +107,6 @@
             this.dgvOperation.Size = new System.Drawing.Size(946, 426);
             this.dgvOperation.TabIndex = 21;
             // 
-            // lblPneu
-            // 
-            this.lblPneu.AutoSize = true;
-            this.lblPneu.Location = new System.Drawing.Point(12, 15);
-            this.lblPneu.Name = "lblPneu";
-            this.lblPneu.Size = new System.Drawing.Size(47, 20);
-            this.lblPneu.TabIndex = 2;
-            this.lblPneu.Text = "Pneu";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Location = new System.Drawing.Point(465, 15);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(499, 72);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Recherche";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(6, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(487, 28);
-            this.textBox1.TabIndex = 0;
-            // 
-            // lblType
-            // 
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(14, 52);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(122, 20);
-            this.lblType.TabIndex = 5;
-            this.lblType.Text = "Type operation";
-            // 
             // colopera_ID
             // 
             this.colopera_ID.DataPropertyName = "opera_ID";
@@ -200,6 +163,44 @@
             this.colopera_Qte.HeaderText = "Quantité";
             this.colopera_Qte.Name = "colopera_Qte";
             this.colopera_Qte.ReadOnly = true;
+            // 
+            // lblPneu
+            // 
+            this.lblPneu.AutoSize = true;
+            this.lblPneu.Location = new System.Drawing.Point(12, 15);
+            this.lblPneu.Name = "lblPneu";
+            this.lblPneu.Size = new System.Drawing.Size(47, 20);
+            this.lblPneu.TabIndex = 2;
+            this.lblPneu.Text = "Pneu";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Location = new System.Drawing.Point(465, 15);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(499, 72);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Recherche";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(6, 29);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(487, 28);
+            this.textBox1.TabIndex = 0;
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(14, 52);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(122, 20);
+            this.lblType.TabIndex = 5;
+            this.lblType.Text = "Type operation";
             // 
             // frmOperation
             // 

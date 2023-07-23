@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/20/2023 23:16:26" ReportInfo.Modified="07/21/2023 00:58:38" ReportInfo.CreatorVersion="2021.2.8.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlq1f6x54XO4m6TDcZP3lKPLGB1FsvV9U/9Oc0SKljtAtUS76yu8007VaKgMTECPx4EKlHE5Ei6M2QAsJXH1NoMB22Yu5rjqFXdlJ4xolBR0VDrYcW1roNnE3oCdI2rAhwIGinqK+wyIMrbAJv1Ynj1gPdu+S7RzOr0KV0clNxWuVpusJNP9WyV+zQFXkM1T/G6G937+MOLpjbzFeAR19MGFg==">
+      <TableDataSource Name="Table" Alias="Journal_All_Operation" DataType="System.Int32" Enabled="true" SelectCommand="EXEC [dbo].[Journal_All_Operation] @pne_Designation">
+        <Column Name="opera_ID" DataType="System.Int32"/>
+        <Column Name="bon_ID" DataType="System.Int32"/>
+        <Column Name="opera_Date" DataType="System.DateTime"/>
+        <Column Name="opera_Type" DataType="System.String"/>
+        <Column Name="pne_ID" DataType="System.Int32"/>
+        <Column Name="pne_Designation" DataType="System.String"/>
+        <Column Name="opera_Qte" DataType="System.Int32"/>
+        <Column Name="be_Designation" DataType="System.String"/>
+        <Column Name="be_Reference" DataType="System.String"/>
+        <CommandParameter Name="pne_Designation" DataType="22" Expression="[pne_Designation]"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="pne_Designation" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="66.15">
+      <TextObject Name="Text1" Top="9.45" Width="718.2" Height="47.25" Text="Hisorique d'article" HorzAlign="Center" VertAlign="Center" Font="Roboto, 16pt, style=Bold, Underline"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="69.35" Width="718.2" Height="37.8">
+      <TextObject Name="Text14" Top="9.45" Width="472.5" Height="18.9" Fill.Color="SpringGreen" Text="Pneu: [pne_Designation]" Font="Roboto, 12pt, style=Bold, Underline"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="151.35" Width="718.2" Height="28.35" DataSource="Table">
+      <TextObject Name="Text4" Width="103.95" Height="28.35" Text="[Journal_All_Operation.opera_Date]" Format="Date" Format.Format="d" VertAlign="Center" Font="Roboto, 10.8pt"/>
+      <TextObject Name="Text6" Left="103.95" Width="113.4" Height="28.35" Text="[Journal_All_Operation.opera_Type]" VertAlign="Center" Font="Roboto, 10.8pt"/>
+      <TextObject Name="Text8" Left="217.35" Width="122.85" Height="28.35" Text="[Journal_All_Operation.be_Designation]" VertAlign="Center" Font="Roboto, 10.8pt"/>
+      <TextObject Name="Text10" Left="340.2" Width="274.05" Height="28.35" Text="[Journal_All_Operation.be_Reference]" VertAlign="Center" Font="Roboto, 10.8pt"/>
+      <TextObject Name="Text12" Left="614.25" Width="103.95" Height="28.35" Text="[Journal_All_Operation.opera_Qte]" VertAlign="Center" Font="Roboto, 10.8pt"/>
+      <DataHeaderBand Name="DataHeader1" Top="110.35" Width="718.2" Height="37.8">
+        <TextObject Name="Text5" Width="103.95" Height="37.8" Fill.Color="PeachPuff" Text="Date" VertAlign="Center" Font="Roboto, 10.8pt, style=Bold"/>
+        <TextObject Name="Text7" Left="103.95" Width="113.4" Height="37.8" Fill.Color="PeachPuff" Text="Opération" VertAlign="Center" Font="Roboto, 10.8pt, style=Bold"/>
+        <TextObject Name="Text9" Left="217.35" Width="122.85" Height="37.8" Fill.Color="PeachPuff" Text="Pneu" VertAlign="Center" Font="Roboto, 10.8pt, style=Bold"/>
+        <TextObject Name="Text11" Left="340.2" Width="274.05" Height="37.8" Fill.Color="PeachPuff" Text="Référence" VertAlign="Center" Font="Roboto, 10.8pt, style=Bold"/>
+        <TextObject Name="Text13" Left="614.25" Width="103.95" Height="37.8" Fill.Color="PeachPuff" Text="Quantité" VertAlign="Center" Font="Roboto, 10.8pt, style=Bold"/>
+      </DataHeaderBand>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="182.9" Width="718.2" Height="18.9">
+      <TextObject Name="Text2" Left="548.1" Width="198.45" Height="18.9" Text="[Page#] / [TotalPages#]" HorzAlign="Right" VertAlign="Center" Font="Roboto, 10.2pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
